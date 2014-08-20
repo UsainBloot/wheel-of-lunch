@@ -8,19 +8,19 @@
 	<!-- Scripts -->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/geolocation.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-	<script type="text/javascript" src="js/wheel.js"></script>
-	
 </head>
 <body>
 	<canvas id="confetti-world"></canvas>
 	<input type="button" value="spin" onclick="spin();"/>
 	<canvas id="wheel" width="500" height="500"></canvas>
 	
+	<div class="information">
+		<input type="text" id="latitude" name="latitude" hidden value="" />
+		<input type="text" id="longitude" name="longitude" hidden value="" />
+	</div>
+	
+	<script type="text/javascript" src="js/geolocation.js"></script>
+	<script type="text/javascript" src="js/wheel.js"></script>
 	<script type="text/javascript" src="js/confetti.js"></script>
-	<script type="text/javascript">
-		drawRouletteWheel();
-	</script>
 </body>
 </html>
