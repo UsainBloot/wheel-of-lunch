@@ -1,9 +1,12 @@
 /* Variables */
-$wheel-width: 500px;
-$wheel-height: 500px;
+$wheel-width: 600px;
+$wheel-height: 600px;
 
 $localisation-width:400px;
 $localisation-height:50px;
+
+$result-width:500px;
+$result-height:110px;
 
 #confetti-world {
 	display: none;
@@ -48,6 +51,17 @@ input[type="button"] {
 		right: 10px;
 		top: 10px;
 	}
+}
+
+.result {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: $result-width;
+	height: $result-height;
+	margin: (-$result-height / 2) 0 0 (-$result-width / 2);
+	text-align: center;
+	z-index: 2;
 }
 
 .blur {

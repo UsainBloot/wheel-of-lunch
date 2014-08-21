@@ -24,9 +24,15 @@
 		</p>
 	</div>
 	
-	<canvas id="confetti-world"></canvas>
+	<div class="panel panel-default result" style="display:none;">
+		<div class="panel-body">
+			<h2></h2>
+		</div>
+	</div>
+	
+	<canvas id="confetti-world" onclick="proceed();"></canvas>
 	<input type="button" class="blur" value="spin" onclick="spin();"/>
-	<canvas id="wheel" class="blur" width="500" height="500"></canvas>
+	<canvas id="wheel" class="blur" width="600" height="600"></canvas>
 	
 	<div class="information">
 		<input type="text" id="latitude" name="latitude" hidden value="" />

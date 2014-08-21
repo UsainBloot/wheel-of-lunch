@@ -1,8 +1,14 @@
-var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
-             "#2E2C75", "#673A7E", "#CC0071", "#F80120",
-             "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
-             
-var restaurants;
+var colours = { bgColour: ["#B8D430", "#3AB745", "#029990", "#3501CB",
+			             "#2E2C75", "#673A7E", "#CC0071", "#F80120",
+			             "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"],
+				fontColour: ["#333", "#333", "#333", "#FFF",
+							"#FFF", "#FFF", "#FFF", "#333",
+							"#333", "#333", "#333", "#333"]};
+
+var width = 600;
+var height = 600;
+var halfWidth = width / 2;
+var halfHeight = width / 2;
 
 var startAngle = 0;
 var arc = Math.PI / (restaurants.length / 2);
@@ -19,12 +25,12 @@ var ctx;
 function drawRouletteWheel() {
 	var canvas = document.getElementById("wheel");
 	if (canvas.getContext) {
-	var outsideRadius = 200;
-	var textRadius = 154;
-	var insideRadius = 120;
+	var outsideRadius = 250;
+	var textRadius = 194;
+	var insideRadius = 150;
 	
 	ctx = canvas.getContext("2d");
-	ctx.clearRect(0,0,500,500);
+	ctx.clearRect(0,0,width,height);
 	
 	
 	ctx.strokeStyle = "black";
@@ -34,37 +40,36 @@ function drawRouletteWheel() {
 	//Draw circle
 	for(var i = 0; i < restaurants.length; i++) {
 		var angle = startAngle + i * arc;
-		ctx.fillStyle = colors[i];
+		ctx.fillStyle = colours.bgColour[i];
 		
 		ctx.beginPath();
-		ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
-		ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+		ctx.arc(halfWidth, halfHeight, outsideRadius, angle, angle + arc, false);
+		ctx.arc(halfWidth, halfHeight, insideRadius, angle + arc, angle, true);
 		ctx.fill();
 		
 		ctx.save();
 		
 		//Render text
-		ctx.fillStyle = "#333";
-		ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
-		            250 + Math.sin(angle + arc / 2) * textRadius);
+		ctx.fillStyle = colours.fontColour[i];
+		ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
+		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
 		ctx.rotate(angle + arc / 2 + Math.PI / 2);
 		var text = restaurants[i];
 		ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-		//wrapText(ctx, text, -ctx.measureText(text).width / 2, 0, 50, 12)
 		ctx.restore();
 	} 
 	
 	//Arrow
 	ctx.fillStyle = "#333";
 	ctx.beginPath();
-	ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
-	ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
-	ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
-	ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
-	ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
-	ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
-	ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
-	ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
+	ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 5));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 5));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius - 5));
+	ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius - 5));
+	ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 13));
+	ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius - 5));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius - 5));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 5));
 	ctx.fill();
 	}
 }
@@ -94,12 +99,15 @@ function stopRotateWheel() {
 	var arcd = arc * 180 / Math.PI;
 	var index = Math.floor((360 - degrees % 360) / arcd);
 	ctx.save();
-	ctx.font = '24px Helvetica, Arial';
-	var text = restaurants[index]
-	ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+	//ctx.font = '24px Helvetica, Arial';
+	var result = restaurants[index];
+	$('.result h2').html(result);
+	//ctx.fillText(text, halfWidth - ctx.measureText(text).width / 2, halfHeight + 12);
 	ctx.restore();
 	
 	//Start confetti
+	$('.result').show();
+	blurBackground();
 	$('canvas#confetti-world').show();
 	init();
 }
@@ -108,23 +116,4 @@ function easeOut(t, b, c, d) {
 	var ts = (t/=d)*t;
 	var tc = ts*t;
 	return b+c*(tc + -3*ts + 3*t);
-}
-
-function wrapText(context, text, x, y, maxWidth, lineHeight) {
-	var words = text.split(' ');
-	var line = '';
-
-	for(var n = 0; n < words.length; n++) {
-		var testLine = line + words[n] + ' ';
-		var metrics = context.measureText(testLine);
-		var testWidth = metrics.width;
-		if (testWidth > maxWidth && n > 0) {
-			context.fillText(line, x, y);
-			line = words[n] + ' ';
-			y += lineHeight;
-		} else {
-			line = testLine;
-		}
-	}
-	context.fillText(line, x, y);
 }

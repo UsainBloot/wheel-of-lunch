@@ -10,9 +10,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px;
-  height: 500px;
-  margin: -250px 0 0 -250px;
+  width: 600px;
+  height: 600px;
+  margin: -300px 0 0 -300px;
   z-index: 0; }
 
 input[type="button"] {
@@ -35,6 +35,16 @@ input[type="button"] {
     position: absolute;
     right: 10px;
     top: 10px; }
+
+.result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 110px;
+  margin: -55px 0 0 -250px;
+  text-align: center;
+  z-index: 2; }
 
 .blur {
   -webkit-filter: blur(8px);
