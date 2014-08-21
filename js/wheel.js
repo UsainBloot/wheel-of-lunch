@@ -50,6 +50,7 @@ function drawRouletteWheel() {
 		ctx.rotate(angle + arc / 2 + Math.PI / 2);
 		var text = restaurants[i];
 		ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+		//wrapText(ctx, text, -ctx.measureText(text).width / 2, 0, 50, 12)
 		ctx.restore();
 	} 
 	
@@ -107,4 +108,23 @@ function easeOut(t, b, c, d) {
 	var ts = (t/=d)*t;
 	var tc = ts*t;
 	return b+c*(tc + -3*ts + 3*t);
+}
+
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+	var words = text.split(' ');
+	var line = '';
+
+	for(var n = 0; n < words.length; n++) {
+		var testLine = line + words[n] + ' ';
+		var metrics = context.measureText(testLine);
+		var testWidth = metrics.width;
+		if (testWidth > maxWidth && n > 0) {
+			context.fillText(line, x, y);
+			line = words[n] + ' ';
+			y += lineHeight;
+		} else {
+			line = testLine;
+		}
+	}
+	context.fillText(line, x, y);
 }
