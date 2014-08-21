@@ -1,7 +1,7 @@
 var restaurants = new Array(12);
 
 function getPlacesAjax(latitude, longitude) {
-	$.getJSON( "/wheel/api/getPlaces?" + 
+	$.getJSON( "/wheel/api/getPlaces/?" + 
 				"latitude=" + latitude + "&" +
 				"longitude=" + longitude + "&" +
 				"radius=" + "1000" + "&" +

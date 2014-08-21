@@ -1,5 +1,6 @@
 #Wheel of Lunch
 HTML5 wheel for random lunch choices using RESTful API for local places
+[Click here to view demo](http://www.jack-palmer.co.uk/wheel)
 
 ##Resources:
 
