@@ -31,4 +31,5 @@ function positionError(err) {
 	drawRouletteWheel();
 };
 
+drawRouletteWheel();
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
