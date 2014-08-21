@@ -1,5 +1,5 @@
 #Wheel of Lunch
-**HTML5 wheel for random lunch choices using RESTful API for local places**
+HTML5 wheel for random lunch choices using RESTful API for local places
 
 ##Resources:
 
