@@ -1,5 +1,3 @@
-var restaurants = new Array(12);
-
 function getPlacesAjax(latitude, longitude) {
 	$.getJSON( "/wheel/api/getPlaces/?" + 
 				"latitude=" + latitude + "&" +
@@ -10,6 +8,7 @@ function getPlacesAjax(latitude, longitude) {
 		console.log(data);
 		restaurants = data;
 		drawRouletteWheel();
+		proceed();
 	});
 };
 
@@ -22,11 +21,14 @@ function positionSuccess(pos) {
 
 function positionError(err) {
 	console.warn('ERROR(' + err.code + '): ' + err.message);
+	
+	$('.localisation').hide();
+	$('.localisation.alert-danger').show();
+	
 	restaurants = ["Wendy's", "McDonalds", "Chick-fil-a", "Five Guys",
-                   "Gold Star", "La Mexicana", "Chipotle", "Tazza Mia",
-                   "Panera", "Just Crepes", "Arby's", "Indian"];
-    
-    drawRouletteWheel();
+	                   "Gold Star", "La Mexicana", "Chipotle", "Tazza Mia",
+	                   "Panera", "Just Crepes", "Arby's", "Indian"];
+	drawRouletteWheel();
 };
 
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
