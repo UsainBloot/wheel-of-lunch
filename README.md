@@ -3,8 +3,8 @@
 
 ##Resources:
 
-###Wheel
+#####Wheel
 [Creating a roulette wheel using HTML5](http://tech.pro/tutorial/1008/creating-a-roulette-wheel-using-html5-canvas)
 
-###Confetti
+#####Confetti
 [HTML5 confetti](http://codepen.io/linrock/pen/Amdhr)

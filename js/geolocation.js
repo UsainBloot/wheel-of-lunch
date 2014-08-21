@@ -14,14 +14,19 @@ function getPlacesAjax(latitude, longitude) {
 };
 
 function positionSuccess(pos) {
-  var crd = pos.coords;
-  $('#latitude').val(crd.latitude);
-  $('#longitude').val(crd.longitude);
-  getPlacesAjax(crd.latitude, crd.longitude)
+	var crd = pos.coords;
+	$('#latitude').val(crd.latitude);
+	$('#longitude').val(crd.longitude);
+	getPlacesAjax(crd.latitude, crd.longitude)
 };
 
 function positionError(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
+	console.warn('ERROR(' + err.code + '): ' + err.message);
+	restaurants = ["Wendy's", "McDonalds", "Chick-fil-a", "Five Guys",
+                   "Gold Star", "La Mexicana", "Chipotle", "Tazza Mia",
+                   "Panera", "Just Crepes", "Arby's", "Indian"];
+    
+    drawRouletteWheel();
 };
 
 navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
