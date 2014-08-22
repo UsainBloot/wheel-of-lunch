@@ -121,9 +121,11 @@ a.settings-open {
   margin-top: 5px;
   cursor: pointer; }
 
-span.input-group-addon {
+div.input-group span.input-group-addon {
   width: 114px;
   text-align: left; }
+div.input-group input {
+  width: 174px !important; }
 
 .one {
   opacity: 0;

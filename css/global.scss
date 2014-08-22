@@ -155,9 +155,15 @@ a.settings-open {
 	cursor: pointer;
 }
 
-span.input-group-addon {
-	width: 114px;
-	text-align: left;
+div.input-group {
+	span.input-group-addon {
+		width: 114px;
+		text-align: left;
+	}
+	
+	input {
+		width: 174px !important;
+	}
 }
 
 .one {

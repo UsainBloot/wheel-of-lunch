@@ -36,6 +36,7 @@ function drawRouletteWheel() {
 	ctx.strokeStyle = "black";
 	ctx.font = "12px Helvetica, Arial";
 	
+	arc = Math.PI / (restaurants.length / 2);
 	
 	//Draw circle
 	for(var i = 0; i < restaurants.length; i++) {

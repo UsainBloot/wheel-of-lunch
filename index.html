@@ -37,21 +37,21 @@
 		<div class="panel-body">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Latitude</span>
-				<input type="text" id="latitude" class="form-control" placeholder="Latitude">
+				<input type="number" id="latitude" class="form-control" placeholder="Latitude">
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Longitude</span>
-				<input type="text" id="longitude" class="form-control" placeholder="Longitude">
+				<input type="number" id="longitude" class="form-control" placeholder="Longitude">
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-record"></span> Radius (m)</span>
-				<input type="text" id="radius" class="form-control" placeholder="Radius">
+				<input type="number" min="1" id="radius" class="form-control" placeholder="Radius">
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span> # of Places</span>
-				<input type="text" id="maxPlaces" class="form-control" disabled placeholder="# of Places" value="12">
+				<input type="number" min="1" max="12" id="maxPlaces" class="form-control" placeholder="# of Places">
 			</div>
-			<button type="button" class="btn btn-primary" onclick="searchUserDefined();"><span class="glyphicon glyphicon-search"></span> Search</button>
+			<button type="submit" class="btn btn-primary" onclick="searchUserDefined();"><span class="glyphicon glyphicon-search"></span>  Search</button>
 		</div>
 	</div>
 	
