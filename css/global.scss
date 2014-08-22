@@ -32,6 +32,10 @@ $result-height:110px;
 	z-index:0;
 }
 
+button:focus {
+	outline: none !important;
+}
+
 button.btn-success {
 	position: absolute;
 	top: 50%;

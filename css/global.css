@@ -15,6 +15,9 @@
   margin: -300px 0 0 -300px;
   z-index: 0; }
 
+button:focus {
+  outline: none !important; }
+
 button.btn-success {
   position: absolute;
   top: 50%;

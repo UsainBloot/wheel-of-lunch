@@ -99,6 +99,7 @@
   window.init = function() {
     var c, _i, _len, _results;
     requestAnimationFrame(init);
+    context.width = context.width;
     context.clearRect(0, 0, w, h);
     _results = [];
     for (_i = 0, _len = confetti.length; _i < _len; _i++) {
