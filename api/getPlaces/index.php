@@ -40,6 +40,6 @@ class PlacesAPI {
 }
 
 $api = new PlacesAPI;
-$api -> getPlaces($_GET['latitude'],$_GET['longitude'], $_GET['radius'], "food", $_GET['maxplaces']);
+$api -> getPlaces($_GET['latitude'],$_GET['longitude'], $_GET['radius'], "restaurant", $_GET['maxplaces']);
 
 ?>
