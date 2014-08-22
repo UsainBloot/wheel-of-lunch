@@ -62,14 +62,14 @@ function drawRouletteWheel() {
 	//Arrow
 	ctx.fillStyle = "#333";
 	ctx.beginPath();
-	ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 5));
-	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 5));
-	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius - 5));
-	ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius - 5));
-	ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 13));
-	ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius - 5));
-	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius - 5));
-	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 5));
+	ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 25));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 0));
+	ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
 	ctx.fill();
 	}
 }
@@ -78,6 +78,7 @@ function spin() {
 	spinAngleStart = Math.random() * 10 + 10;
 	spinTime = 0;
 	spinTimeTotal = Math.random() * 3 + 4 * spinVelocity;
+	closeSettings();
 	rotateWheel();
 }
 

@@ -1,6 +1,9 @@
 var restaurants = new Array(12);
 
 $(document).ready(function() {
+	$('a.settings').click(function() {
+		toggleSettings();
+	});
 });
 
 function proceed() {
@@ -21,4 +24,18 @@ function blurBackground() {
 
 function unblurBackground() {
 	$('.blur').removeClass('blur').addClass('unblur');
+}
+
+function toggleSettings() {
+	if($('.settings-open')[0] == undefined) {
+		$('.settings').addClass('settings-open');
+	} else {
+		$('.settings').removeClass('settings-open');
+	}
+}
+
+function closeSettings() {
+	if($('.settings-open')[0] != undefined) {
+		$('.settings').removeClass('settings-open');
+	}
 }
