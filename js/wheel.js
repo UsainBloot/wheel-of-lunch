@@ -55,7 +55,7 @@ function drawRouletteWheel() {
 		ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
 		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
 		ctx.rotate(angle + arc / 2 + Math.PI / 2);
-		var text = restaurants[i];
+		var text = restaurants[i].name;
 		ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
 		ctx.restore();
 	} 
@@ -101,10 +101,15 @@ function stopRotateWheel() {
 	var arcd = arc * 180 / Math.PI;
 	var index = Math.floor((360 - degrees % 360) / arcd);
 	ctx.save();
-	//ctx.font = '24px Helvetica, Arial';
-	var result = restaurants[index];
-	$('.result h2').html(result);
-	//ctx.fillText(text, halfWidth - ctx.measureText(text).width / 2, halfHeight + 12);
+	
+	var resultName = restaurants[index].name.split(' ').join('+');
+	var mapURL = "http://maps.google.com/maps/search/"
+	
+	//Display Result
+	$('.result h2').html(restaurants[index].name);
+	$('.result p.vicinity').html(restaurants[index].vicinity);
+	$('.result a.map').attr("href", mapURL + resultName + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
+	
 	ctx.restore();
 	
 	//Start confetti

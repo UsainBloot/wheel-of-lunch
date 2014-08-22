@@ -51,8 +51,8 @@ button.btn-success {
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 110px;
-  margin: -55px 0 0 -250px;
+  min-height: 150px;
+  margin: -75px 0 0 -250px;
   text-align: center;
   z-index: 3; }
 

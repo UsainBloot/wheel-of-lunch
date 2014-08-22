@@ -30,7 +30,10 @@ class PlacesAPI {
 		
 		$i = 0;
 		while($i < $maxPlaces) {
-			array_push($places, $results[$i]['name']);
+			$places[$i]['name'] = $results[$i]['name'];
+			$places[$i]['lat'] = $results[$i]['geometry']['location']['lat'];
+			$places[$i]['lng'] = $results[$i]['geometry']['location']['lng'];
+			$places[$i]['vicinity'] = $results[$i]['vicinity'];
 			$i++;
 		}
 		

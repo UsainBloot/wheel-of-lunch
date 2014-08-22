@@ -12,7 +12,7 @@ $localisation-width:400px;
 $localisation-height:50px;
 
 $result-width:500px;
-$result-height:110px;
+$result-height:150px;
 
 #confetti-world {
 	display: none;
@@ -75,7 +75,7 @@ button.btn-success {
 	top: 50%;
 	left: 50%;
 	width: $result-width;
-	height: $result-height;
+	min-height: $result-height;
 	margin: (-$result-height / 2) 0 0 (-$result-width / 2);
 	text-align: center;
 	z-index: 3;
