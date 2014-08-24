@@ -5,7 +5,7 @@ class PlacesAPI {
 	private $baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 	private $apiKey = "AIzaSyCGjVkAtfdNT6aWKb_cheGZDFMWid4g0Pw";
 	
-	public function getPlaces($latitude, $longitude, $radius, $types, $maxPlaces) {
+	public function getPlaces($latitude, $longitude, $radius, $types, $maxPlaces, $minPrice, $maxPrice) {
 		
 		$curl = curl_init();
 		
@@ -14,8 +14,8 @@ class PlacesAPI {
 				"location=" . $latitude . "," . $longitude . "&" .
 				"radius=" . $radius . "&" .
 				"types=" . $types . "&" . 
-				"minprice=" . "0" . "&" . 
-				"maxprice=" . "2" . "&" . 
+				"minprice=" . $minPrice . "&" . 
+				"maxprice=" . $maxPrice . "&" . 
 				"key=" . $this->apiKey;
 				
 		curl_setopt($curl, CURLOPT_URL, $url);
@@ -43,6 +43,12 @@ class PlacesAPI {
 }
 
 $api = new PlacesAPI;
-$api -> getPlaces($_GET['latitude'],$_GET['longitude'], $_GET['radius'], "restaurant", $_GET['maxplaces']);
+$api -> getPlaces($_GET['latitude'],
+				  $_GET['longitude'],
+				  $_GET['radius'], 
+				  "restaurant", 
+				  $_GET['maxplaces'], 
+				  $_GET['minPrice'], 
+				  $_GET['maxPrice']);
 
 ?>

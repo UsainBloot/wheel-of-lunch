@@ -5,7 +5,9 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 				"latitude=" + latitude + "&" +
 				"longitude=" + longitude + "&" +
 				"radius=" + radius + "&" +
-				"maxplaces=" + restaurants.length
+				"maxplaces=" + restaurants.length + "&" + 
+				"minPrice" + "0" + "&" +
+				"maxPrice" + "3"
 				, function( data ) {
 		console.log(data);
 		restaurants = data;

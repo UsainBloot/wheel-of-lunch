@@ -32,11 +32,7 @@ function unblurBackground() {
 }
 
 function toggleSettings() {
-	if($('.settings-open')[0] == undefined) {
-		$('.settings').addClass('settings-open');
-	} else {
-		$('.settings').removeClass('settings-open');
-	}
+	$('.settings').toggleClass('settings-open');
 }
 
 function closeSettings() {
