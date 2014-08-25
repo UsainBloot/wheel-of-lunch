@@ -56,7 +56,8 @@ function drawRouletteWheel() {
 		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
 		ctx.rotate(angle + arc / 2 + Math.PI / 2);
 		var text = restaurants[i].name;
-		ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+		//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+		printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
 		ctx.restore();
 	} 
 	
@@ -123,4 +124,36 @@ function easeOut(t, b, c, d) {
 	var ts = (t/=d)*t;
 	var tc = ts*t;
 	return b+c*(tc + -3*ts + 3*t);
+}
+
+function printAt(context, text, x, y, lineHeight, fitWidth)
+{
+    fitWidth = fitWidth || 0;
+    
+    if (fitWidth <= 0) {
+        context.fillText( text, x, y );
+        return;
+    }
+    
+    for (var idx = 1; idx <= text.length; idx++) {
+        var str = text.substr(0, idx);
+        console.log(str, context.measureText(str).width, fitWidth);
+        
+        if (context.measureText(str).width > fitWidth) {
+        	var splitDash = ""
+        	if(text.charAt(idx-2) != " ") {
+	        	splitDash = "-";
+        	}
+        	var headText = text.substr(0, idx-1) + splitDash;
+        	var tailText = text.substr(idx-1);
+            context.fillText( headText, -context.measureText(headText).width / 2, y - lineHeight);
+            printAt(context, tailText, -context.measureText(tailText).width / 2, y + lineHeight, lineHeight,  fitWidth - 10);
+            return;
+        }
+    }
+    if(y == 0) {
+    	context.fillText(text, x, y);
+    } else {
+	    context.fillText(text, x, y - lineHeight);
+    }
 }
