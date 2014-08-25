@@ -3,11 +3,11 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 	
 	$.getJSON( "/wheel/api/getPlaces/?" + 
 				"latitude=" + latitude + "&" +
-				"longitude=" + longitude + "&" +
+				"longitude=" + longitude + "&" + 
 				"radius=" + radius + "&" +
 				"maxplaces=" + restaurants.length + "&" + 
-				"minPrice" + "0" + "&" +
-				"maxPrice" + "3"
+				"minPrice=" + "0" + "&" +
+				"maxPrice=" + "4"
 				, function( data ) {
 		console.log(data);
 		restaurants = data;

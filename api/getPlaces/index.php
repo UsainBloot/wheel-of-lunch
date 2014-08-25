@@ -29,6 +29,9 @@ class PlacesAPI {
 		$places = array();
 		
 		$i = 0;
+		if(sizeof($results) < $maxPlaces) {
+			$maxPlaces = sizeof($results);
+		}
 		while($i < $maxPlaces) {
 			$places[$i]['name'] = $results[$i]['name'];
 			$places[$i]['lat'] = $results[$i]['geometry']['location']['lat'];
