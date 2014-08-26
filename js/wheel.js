@@ -137,7 +137,6 @@ function printAt(context, text, x, y, lineHeight, fitWidth)
     
     for (var idx = 1; idx <= text.length; idx++) {
         var str = text.substr(0, idx);
-        console.log(str, context.measureText(str).width, fitWidth);
         
         if (context.measureText(str).width > fitWidth) {
         	var splitDash = ""
