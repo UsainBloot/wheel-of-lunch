@@ -59,25 +59,6 @@ function getUrlParams() {
     return vars;
 }
 
-function createURL() {
-	var url = window.location.href + "?";
-	var params = { 'lat': $('#latitude').val(), 
-					'long':  $('#longitude').val(), 
-					'radius': $('#radius').val(), 
-					'maxplaces': $('#maxPlaces').val() };
-	
-	for(var key in params) {
-		if (params[key].length > 0) {
-			if(url.substr(url.length - 1) == "?") {
-				url += key + "=" + params[key];
-			} else {
-				url += "&" + key + "=" + params[key];
-			}
-		}
-	}
-	return url;	
-}
-
 function initLocation() {
 	drawRouletteWheel();
 	

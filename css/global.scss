@@ -137,6 +137,10 @@ a.settings:hover ~ div.settings {
     transition: all 0.25s ease-out;
 }
 
+a.shareLink {
+	cursor: pointer;
+}
+
 .settings div.input-group {
 	margin-bottom: 5px;
 }

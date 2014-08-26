@@ -40,3 +40,39 @@ function closeSettings() {
 		$('.settings').removeClass('settings-open');
 	}
 }
+
+function viewShareLink() {
+	window.location.href = createURL();
+}
+
+function getUrlParams() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        if(hash.length == 2) {
+	        vars.push(hash[0]);
+	        vars[hash[0]] = hash[1];
+	    }
+    }
+    return vars;
+}
+
+function createURL() {
+	var url = window.location.href + "?";
+	var params = { 'lat': $('#latitude').val(), 
+					'long':  $('#longitude').val(), 
+					'radius': $('#radius').val(), 
+					'maxplaces': $('#maxPlaces').val() };
+	
+	for(var key in params) {
+		if (params[key].length > 0) {
+			if(url.substr(url.length - 1) == "?") {
+				url += key + "=" + params[key];
+			} else {
+				url += "&" + key + "=" + params[key];
+			}
+		}
+	}
+	return url;	
+}
