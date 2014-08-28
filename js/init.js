@@ -46,7 +46,7 @@ function viewShareLink() {
 }
 
 function createURL() {
-	var url = window.location.href + "?";
+	var url = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
 	var params = { 'lat': $('#latitude').val(), 
 					'long':  $('#longitude').val(), 
 					'radius': $('#radius').val(), 
