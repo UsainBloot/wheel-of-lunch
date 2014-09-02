@@ -10,9 +10,23 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 				"maxPrice=" + "4"
 				, function( data ) {
 		console.log(data);
-		restaurants = data;
-		drawRouletteWheel();
-		proceed();
+		if(data.length < initialPlaces && rangeCounter < 12) {
+			if(rangeCounter > 4) {
+				radiusIncremental = 100;
+			}
+			if(rangeCounter > 9) {
+				radiusIncremental = 500;
+			}
+			
+			rangeCounter++;
+			getPlacesAjax(latitude, longitude, parseInt(radius) + radiusIncremental, maxPlaces);
+		} else {
+			restaurants = data;
+			initialPlaces = 0;
+			$('#radius').val(radius);
+			drawRouletteWheel();
+			proceed();
+		}
 	});
 };
 
@@ -63,18 +77,23 @@ function initLocation() {
 	drawRouletteWheel();
 	
 	if(params.length >= 0) {
+		
 		if(params['radius'] != undefined) {
 			defaultRadius = params['radius'];
+			initialPlaces = 0;
 		}
 		
 		if(params['maxplaces'] != undefined) {
 			defaultMaxPlaces = parseInt(params['maxplaces']);
+			initialPlaces = 0;
 		}
 		
 		if(params['lat'] == undefined || params['long'] == undefined) {
 			navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 		} else {
 			crd = { 'latitude': params['lat'], 'longitude': params['long']};
+			
+			initialPlaces = 0;
 			
 			$('#latitude').val(crd.latitude);
 			$('#longitude').val(crd.longitude);
@@ -90,8 +109,11 @@ function initLocation() {
 }
 
 var crd;
-var defaultRadius = 2000;
+var rangeCounter = 0;
+var defaultRadius = 300;
+var radiusIncremental = 50;
 var defaultMaxPlaces = 12;
+var initialPlaces = 12;
 var params = getUrlParams();
 
 initLocation();
