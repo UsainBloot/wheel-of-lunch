@@ -93,8 +93,6 @@ function initLocation() {
 		} else {
 			crd = { 'latitude': params['lat'], 'longitude': params['long']};
 			
-			initialPlaces = 0;
-			
 			$('#latitude').val(crd.latitude);
 			$('#longitude').val(crd.longitude);
 			$('#radius').val(defaultRadius);
