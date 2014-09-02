@@ -9,9 +9,6 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
-	$('input#latitude, input#longitude, input#radius, input#maxPlaces').change(function() {
-		generateShareLink();
-	});
 });
 
 function proceed() {
