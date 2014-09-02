@@ -10,11 +10,11 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 				"maxPrice=" + "4"
 				, function( data ) {
 		console.log(data);
-		if(data.length < initialPlaces && rangeCounter < 12) {
-			if(rangeCounter > 4) {
+		if(data.length < initialPlaces && rangeCounter < 11) {
+			if(rangeCounter > 3) {
 				radiusIncremental = 100;
 			}
-			if(rangeCounter > 9) {
+			if(rangeCounter > 8) {
 				radiusIncremental = 500;
 			}
 			
