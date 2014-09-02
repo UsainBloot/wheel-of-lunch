@@ -47,12 +47,12 @@ function positionError(err) {
 	$('.localisation').hide();
 	$('.localisation.alert-danger').show();
 	
-	restaurants = [{name:"Wendy's", lat:"", lng:"", vicinity:""}, {name:"McDonalds", lat:"", lng:"", vicinity:""},
-					{name:"Chick-fil-a", lat:"", lng:"", vicinity:""}, {name:"Five Guys", lat:"", lng:"", vicinity:""},
-	                {name:"Gold Star", lat:"", lng:"", vicinity:""}, {name:"La Mexicana", lat:"", lng:"", vicinity:""}, 
-	                {name:"Chipotle", lat:"", lng:"", vicinity:""}, {name:"Tazza Mia", lat:"", lng:"", vicinity:""},
-	                {name:"Panera", lat:"", lng:"", vicinity:""}, {name:"Just Crepes", lat:"", lng:"", vicinity:""}, 
-	                {name:"Arby's", lat:"", lng:"", vicinity:""}, {name:"Indian", lat:"", lng:"", vicinity:""}];
+	restaurants = [{name:"Pizza Express", lat:"", lng:"", vicinity:""}, {name:"McDonalds", lat:"", lng:"", vicinity:""},
+					{name:"Nandos", lat:"", lng:"", vicinity:""}, {name:"Subway", lat:"", lng:"", vicinity:""},
+	                {name:"Pret A Manger", lat:"", lng:"", vicinity:""}, {name:"Eat", lat:"", lng:"", vicinity:""}, 
+	                {name:"Marks & Spencer", lat:"", lng:"", vicinity:""}, {name:"Waitrose", lat:"", lng:"", vicinity:""},
+	                {name:"Strada", lat:"", lng:"", vicinity:""}, {name:"Zizzi's", lat:"", lng:"", vicinity:""}, 
+	                {name:"Las Iguanas", lat:"", lng:"", vicinity:""}, {name:"Byron", lat:"", lng:"", vicinity:""}];
 	drawRouletteWheel();
 };
 
