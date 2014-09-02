@@ -9,6 +9,9 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
+	$('input#latitude, input#longitude, input#radius, input#maxPlaces').change(function() {
+		generateShareLink();
+	});
 });
 
 function proceed() {
@@ -21,6 +24,7 @@ function proceed() {
 	$('#confetti-world').hide();
 	
     unblurBackground();
+    generateShareLink();
 }
 
 function blurBackground() {
@@ -41,8 +45,8 @@ function closeSettings() {
 	}
 }
 
-function viewShareLink() {
-	window.location.href = createURL();
+function generateShareLink() {
+	$('#shareLink').val(createURL());
 }
 
 function createURL() {
