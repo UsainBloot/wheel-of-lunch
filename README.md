@@ -12,8 +12,5 @@ Wheel of Lunch is a website which determines where a user should go for lunch. T
 
 ##Resources:
 
-#####Wheel
 * [Creating a roulette wheel using HTML5.](http://tech.pro/tutorial/1008/creating-a-roulette-wheel-using-html5-canvas)
-
-#####Confetti
 * [HTML5 confetti.](http://codepen.io/linrock/pen/Amdhr)
