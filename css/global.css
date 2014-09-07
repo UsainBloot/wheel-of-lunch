@@ -15,6 +15,15 @@
   margin: -300px 0 0 -300px;
   z-index: 0; }
 
+#search {
+  width: 90px;
+  transition: all 0.3s ease-out; }
+
+#search.green {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  transition: all 0.3s ease-out; }
+
 button, button:hover {
   transition: all 0.3s ease-out; }
 

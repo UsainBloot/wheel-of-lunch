@@ -9,6 +9,18 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
+	$('button#search').click(function() {
+		searchUserDefined();
+	});
+	$('button#localistion-failure').click(function() {
+		proceed();
+	});
+	$('button#spin').click(function() {
+		spin();
+	});
+	$('canvas#confetti-world').click(function() {
+		proceed();
+	});
 });
 
 function proceed() {

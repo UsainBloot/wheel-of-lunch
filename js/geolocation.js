@@ -27,6 +27,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			$('#radius').val(radius);
 			drawRouletteWheel();
 			proceed();
+			$('#search').html('<span class="glyphicon glyphicon-search"></span>  Search');
 		}
 	});
 };
@@ -58,6 +59,7 @@ function positionError(err) {
 };
 
 function searchUserDefined() {
+	$('#search').html('<i class="fa fa-refresh fa-spin"></i>');
 	getPlacesAjax($('#latitude').val(), $('#longitude').val(), $('#radius').val(), defaultPlaceType, parseInt($('#maxPlaces').val()));
 }
 
