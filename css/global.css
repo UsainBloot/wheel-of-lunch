@@ -85,7 +85,7 @@ button.btn-success {
 div.settings {
   position: absolute;
   width: 340px;
-  height: 275px;
+  height: 385px;
   padding: 10px;
   top: 0px;
   -moz-border-radius: 4px 0 4px 4px;
@@ -93,6 +93,8 @@ div.settings {
   border-radius: 4px 0 4px 4px;
   left: -340px;
   z-index: 1; }
+  div.settings > div {
+    padding-top: 0px; }
 
 a.settings {
   position: absolute;

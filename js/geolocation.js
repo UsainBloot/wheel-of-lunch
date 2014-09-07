@@ -35,6 +35,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 function positionSuccess(pos) {
 	crd = pos.coords;
 	
+	$('#type-' + defaultPlaceType).prop('checked', true);
 	$('#latitude').val(crd.latitude);
 	$('#longitude').val(crd.longitude);
 	$('#radius').val(defaultRadius);
@@ -60,7 +61,13 @@ function positionError(err) {
 
 function searchUserDefined() {
 	$('#search').html('<i class="fa fa-refresh fa-spin"></i>');
-	getPlacesAjax($('#latitude').val(), $('#longitude').val(), $('#radius').val(), defaultPlaceType, parseInt($('#maxPlaces').val()));
+	getPlacesAjax(
+					$('#latitude').val(), 
+					$('#longitude').val(), 
+					$('#radius').val(), 
+					$('.settings input[type=radio]:checked').val(), 
+					parseInt($('#maxPlaces').val())
+				);
 }
 
 function getUrlParams() {
@@ -101,6 +108,7 @@ function initLocation() {
 		} else {
 			crd = { 'latitude': params['lat'], 'longitude': params['long']};
 			
+			$('#type-' + defaultPlaceType).prop('checked', true);
 			$('#latitude').val(crd.latitude);
 			$('#longitude').val(crd.longitude);
 			$('#radius').val(defaultRadius);

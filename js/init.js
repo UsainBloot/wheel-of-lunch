@@ -64,7 +64,7 @@ function createURL() {
 	var params = { 'lat': $('#latitude').val(), 
 					'long':  $('#longitude').val(), 
 					'radius': $('#radius').val(),
-					'type' : "restaurant", 
+					'type' : $('.settings input[type=radio]:checked').val(), 
 					'maxplaces': $('#maxPlaces').val() };
 	
 	for(var key in params) {

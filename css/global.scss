@@ -6,7 +6,7 @@ $button-width: 80px;
 $button-height: 40px;
 
 $settings-width: 340px;
-$settings-height: 275px;
+$settings-height: 385px;
 
 $localisation-width:400px;
 $localisation-height:50px;
@@ -126,6 +126,10 @@ div.settings {
 	border-radius: 4px 0 4px 4px;
 	left: -$settings-width;
 	z-index: 1;
+	
+	> div {
+		padding-top: 0px;
+	}
 }
 
 a.settings {
