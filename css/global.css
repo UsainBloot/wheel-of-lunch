@@ -1,4 +1,5 @@
 /* Variables */
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
 #confetti-world {
   display: none;
   position: fixed;
@@ -42,6 +43,16 @@ button.btn-success {
   .localisation p {
     text-align: center; }
 
+.clickme {
+  position: absolute;
+  top: 8px;
+  left: 46px;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #262626; }
+
+#search {
+  width: 90px; }
+
 .alert.localisation p {
   text-align: left; }
   .alert.localisation p button {
@@ -74,7 +85,7 @@ button.btn-success {
 div.settings {
   position: absolute;
   width: 340px;
-  height: 275px;
+  height: 385px;
   padding: 10px;
   top: 0px;
   -moz-border-radius: 4px 0 4px 4px;
@@ -82,6 +93,8 @@ div.settings {
   border-radius: 4px 0 4px 4px;
   left: -340px;
   z-index: 1; }
+  div.settings > div {
+    padding-top: 0px; }
 
 a.settings {
   position: absolute;
@@ -103,11 +116,15 @@ a.settings:hover {
   -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   cursor: pointer; }
-
-a.settings:hover ~ div.settings {
-  left: -335px;
-  -webkit-transition: all 0.25s ease-out;
-  transition: all 0.25s ease-out; }
+  a.settings:hover ~ div.settings {
+    left: -335px;
+    -webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out; }
+  a.settings:hover ~ div.clickme {
+    left: 51px;
+    -webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    color: #000000; }
 
 a.shareLink {
   cursor: pointer; }

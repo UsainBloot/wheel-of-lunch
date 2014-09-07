@@ -9,6 +9,18 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
+	$('button#search').click(function() {
+		searchUserDefined();
+	});
+	$('button#localistion-failure').click(function() {
+		proceed();
+	});
+	$('button#spin').click(function() {
+		spin();
+	});
+	$('canvas#confetti-world').click(function() {
+		proceed();
+	});
 });
 
 function proceed() {
@@ -34,6 +46,7 @@ function unblurBackground() {
 
 function toggleSettings() {
 	$('.settings').toggleClass('settings-open');
+	$('.clickme').hide();
 }
 
 function closeSettings() {
@@ -50,7 +63,8 @@ function createURL() {
 	var url = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
 	var params = { 'lat': $('#latitude').val(), 
 					'long':  $('#longitude').val(), 
-					'radius': $('#radius').val(), 
+					'radius': $('#radius').val(),
+					'type' : $('.settings input[type=radio]:checked').val(), 
 					'maxplaces': $('#maxPlaces').val() };
 	
 	for(var key in params) {

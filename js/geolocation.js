@@ -1,10 +1,11 @@
-function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
+function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 	restaurants = new Array(maxPlaces);
 	
 	$.getJSON( "/wheel/api/getPlaces/?" + 
 				"latitude=" + latitude + "&" +
 				"longitude=" + longitude + "&" + 
 				"radius=" + radius + "&" +
+				"type=" + placeType + "&" +
 				"maxplaces=" + restaurants.length + "&" + 
 				"minPrice=" + "0" + "&" +
 				"maxPrice=" + "4"
@@ -26,6 +27,7 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 			$('#radius').val(radius);
 			drawRouletteWheel();
 			proceed();
+			$('#search').html('<span class="glyphicon glyphicon-search"></span>  Search');
 		}
 	});
 };
@@ -33,12 +35,13 @@ function getPlacesAjax(latitude, longitude, radius, maxPlaces) {
 function positionSuccess(pos) {
 	crd = pos.coords;
 	
+	$('#type-' + defaultPlaceType).prop('checked', true);
 	$('#latitude').val(crd.latitude);
 	$('#longitude').val(crd.longitude);
 	$('#radius').val(defaultRadius);
 	$('#maxPlaces').val(defaultMaxPlaces);
 	
-	getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultMaxPlaces);
+	getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultPlaceType, defaultMaxPlaces);
 };
 
 function positionError(err) {
@@ -57,7 +60,14 @@ function positionError(err) {
 };
 
 function searchUserDefined() {
-	getPlacesAjax($('#latitude').val(), $('#longitude').val(), $('#radius').val(), parseInt($('#maxPlaces').val()));
+	$('#search').html('<i class="fa fa-refresh fa-spin"></i>');
+	getPlacesAjax(
+					$('#latitude').val(), 
+					$('#longitude').val(), 
+					$('#radius').val(), 
+					$('.settings input[type=radio]:checked').val(), 
+					parseInt($('#maxPlaces').val())
+				);
 }
 
 function getUrlParams() {
@@ -88,17 +98,23 @@ function initLocation() {
 			initialPlaces = 0;
 		}
 		
+		if(params['type'] != undefined) {
+			defaultPlaceType = params['type'];
+			initialPlaces = 0;
+		}
+		
 		if(params['lat'] == undefined || params['long'] == undefined) {
 			navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 		} else {
 			crd = { 'latitude': params['lat'], 'longitude': params['long']};
 			
+			$('#type-' + defaultPlaceType).prop('checked', true);
 			$('#latitude').val(crd.latitude);
 			$('#longitude').val(crd.longitude);
 			$('#radius').val(defaultRadius);
 			$('#maxPlaces').val(defaultMaxPlaces);
 			
-			getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultMaxPlaces);
+			getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultPlaceType, defaultMaxPlaces);
 		}
 		
 	} else {
@@ -110,6 +126,7 @@ var crd;
 var rangeCounter = 0;
 var defaultRadius = 300;
 var radiusIncremental = 50;
+var defaultPlaceType = "restaurant";
 var defaultMaxPlaces = 12;
 var initialPlaces = 12;
 var params = getUrlParams();
