@@ -46,6 +46,7 @@ function unblurBackground() {
 
 function toggleSettings() {
 	$('.settings').toggleClass('settings-open');
+	$('.clickme').hide();
 }
 
 function closeSettings() {
