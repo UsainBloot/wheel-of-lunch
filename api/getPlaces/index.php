@@ -5,15 +5,16 @@ class PlacesAPI {
 	private $baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 	private $apiKey = "AIzaSyCGjVkAtfdNT6aWKb_cheGZDFMWid4g0Pw";
 	
-	public function getPlaces($latitude, $longitude, $radius, $types, $maxPlaces, $minPrice, $maxPrice) {
+	public function getPlaces($latitude, $longitude, $radius, $type, $maxPlaces, $minPrice, $maxPrice) {
+		
+		$type = $this -> validatePlaceType($_GET['type']);
 		
 		$curl = curl_init();
-		
 		
 		$url = $this->baseURL . "?" .
 				"location=" . $latitude . "," . $longitude . "&" .
 				"radius=" . $radius . "&" .
-				"types=" . $types . "&" . 
+				"types=" . $type . "&" . 
 				"minprice=" . $minPrice . "&" . 
 				"maxprice=" . $maxPrice . "&" . 
 				"key=" . $this->apiKey;
@@ -43,13 +44,24 @@ class PlacesAPI {
 		echo json_encode($places);
 	}
 	
+	private function validatePlaceType($type) {
+	
+		$validPlaces = array('restaurant', 'food', 'bar');
+		
+		if(!in_array($type, $validPlaces)) {
+			$type = $validPlaces[0];
+		}
+		
+		return $type;
+	}
+	
 }
 
 $api = new PlacesAPI;
 $api -> getPlaces($_GET['latitude'],
 				  $_GET['longitude'],
 				  $_GET['radius'], 
-				  "restaurant", 
+				  $_GET['type'], 
 				  $_GET['maxplaces'], 
 				  $_GET['minPrice'], 
 				  $_GET['maxPrice']);
