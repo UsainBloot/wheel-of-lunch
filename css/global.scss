@@ -121,9 +121,9 @@ div.settings {
 	height: $settings-height;
 	padding: 10px;
 	top: 0px;
-	-moz-border-radius: 4px 0 4px 4px;
-	-webkit-border-radius: 4px 0 4px 4px;
-	border-radius: 4px 0 4px 4px;
+	-moz-border-radius: 0px 0 4px 0px;
+	-webkit-border-radius: 0px 0 4px 0px;
+	border-radius: 0px 0 4px 0px;
 	left: -$settings-width;
 	z-index: 1;
 	
