@@ -8,8 +8,8 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 				"type=" + placeType + "&" +
 				"maxplaces=" + restaurants.length + "&" + 
 				"minPrice=" + "0" + "&" +
-				"maxPrice=" + "4"
-				, function( data ) {
+				"maxPrice=" + "4",
+	function( data ) {
 		console.log(data);
 		if(data.length < initialPlaces && rangeCounter < 11) {
 			if(rangeCounter > 3) {
@@ -30,7 +30,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			$('#search').html('<span class="glyphicon glyphicon-search"></span>  Search');
 		}
 	});
-};
+}
 
 function positionSuccess(pos) {
 	crd = pos.coords;
@@ -42,7 +42,7 @@ function positionSuccess(pos) {
 	$('#maxPlaces').val(defaultMaxPlaces);
 	
 	getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultPlaceType, defaultMaxPlaces);
-};
+}
 
 function positionError(err) {
 	console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -57,7 +57,7 @@ function positionError(err) {
 	                {name:"Strada", lat:"", lng:"", vicinity:""}, {name:"Zizzi's", lat:"", lng:"", vicinity:""}, 
 	                {name:"Las Iguanas", lat:"", lng:"", vicinity:""}, {name:"Byron", lat:"", lng:"", vicinity:""}];
 	drawRouletteWheel();
-};
+}
 
 function searchUserDefined() {
 	$('#search').html('<i class="fa fa-refresh fa-spin"></i>');
@@ -88,25 +88,25 @@ function initLocation() {
 	
 	if(params.length >= 0) {
 		
-		if(params['radius'] != undefined) {
-			defaultRadius = params['radius'];
+		if(params.radius !== undefined) {
+			defaultRadius = params.radius;
 			initialPlaces = 0;
 		}
 		
-		if(params['maxplaces'] != undefined) {
-			defaultMaxPlaces = parseInt(params['maxplaces']);
+		if(params.maxplaces !== undefined) {
+			defaultMaxPlaces = parseInt(params.maxplaces);
 			initialPlaces = 0;
 		}
 		
-		if(params['type'] != undefined) {
-			defaultPlaceType = params['type'];
+		if(params.type !== undefined) {
+			defaultPlaceType = params.type;
 			initialPlaces = 0;
 		}
 		
-		if(params['lat'] == undefined || params['long'] == undefined) {
+		if(params.lat === undefined || params.long === undefined) {
 			navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 		} else {
-			crd = { 'latitude': params['lat'], 'longitude': params['long']};
+			crd = { 'latitude': params.lat, 'longitude': params.long};
 			
 			$('#type-' + defaultPlaceType).prop('checked', true);
 			$('#latitude').val(crd.latitude);

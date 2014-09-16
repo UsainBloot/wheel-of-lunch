@@ -17,7 +17,8 @@
 
   resizeWindow = function() {
     window.w = canvas.width = window.innerWidth;
-    return window.h = canvas.height = window.innerHeight;
+    window.h = canvas.height = window.innerHeight;
+    return window.h;
   };
 
   window.addEventListener('resize', resizeWindow, false);
@@ -62,7 +63,8 @@
       this.xmax = w - this.r;
       this.ymax = h - this.r;
       this.vx = range(0, 2) + 8 * xpos - 5;
-      return this.vy = 0.7 * this.r + range(-1, 1);
+      this.vy = 0.7 * this.r + range(-1, 1);
+      return this.vy;
     };
 
     Confetti.prototype.draw = function() {
@@ -91,7 +93,7 @@
     var _i, _results;
     _results = [];
     for (i = _i = 1; 1 <= NUM_CONFETTI ? _i <= NUM_CONFETTI : _i >= NUM_CONFETTI; i = 1 <= NUM_CONFETTI ? ++_i : --_i) {
-      _results.push(new Confetti);
+      _results.push(new Confetti());
     }
     return _results;
   })();

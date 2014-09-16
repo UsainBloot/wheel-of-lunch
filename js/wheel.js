@@ -93,7 +93,9 @@ function rotateWheel() {
 	var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
 	startAngle += (spinAngle * Math.PI / 180);
 	drawRouletteWheel();
-	spinTimeout = setTimeout('rotateWheel()', 30);
+	spinTimeout = setTimeout(function() { 
+		rotateWheel();	
+	}, 30);
 }
 
 function stopRotateWheel() {
@@ -104,7 +106,7 @@ function stopRotateWheel() {
 	ctx.save();
 	
 	var resultName = restaurants[index].name.split(' ').join('+');
-	var mapURL = "http://maps.google.com/maps/search/"
+	var mapURL = "http://maps.google.com/maps/search/";
 	
 	//Display Result
 	$('.result h2').html(restaurants[index].name);
@@ -139,7 +141,7 @@ function printAt(context, text, x, y, lineHeight, fitWidth)
         var str = text.substr(0, idx);
         
         if (context.measureText(str).width > fitWidth) {
-        	var splitDash = ""
+        	var splitDash = "";
         	if(text.charAt(idx-2) != " ") {
 	        	splitDash = "-";
         	}
@@ -150,7 +152,7 @@ function printAt(context, text, x, y, lineHeight, fitWidth)
             return;
         }
     }
-    if(y == 0) {
+    if(y === 0) {
     	context.fillText(text, x, y);
     } else {
 	    context.fillText(text, x, y - lineHeight);
