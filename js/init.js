@@ -50,7 +50,7 @@ function toggleSettings() {
 }
 
 function closeSettings() {
-	if($('.settings-open')[0] != undefined) {
+	if($('.settings-open')[0] !== undefined) {
 		$('.settings').removeClass('settings-open');
 	}
 }
