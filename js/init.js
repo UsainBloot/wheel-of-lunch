@@ -6,14 +6,37 @@ var restaurants = [{name:"Wendy's", lat:"", lng:"", vicinity:""}, {name:"McDonal
 	                {name:"Arby's", lat:"", lng:"", vicinity:""}, {name:"Indian", lat:"", lng:"", vicinity:""}];
 
 $(document).ready(function() {
+	drawRouletteWheel();
+
+	if(params.length > 0){
+		initLocation();
+		proceed();
+	}
+
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
 	$('button#search').click(function() {
 		searchUserDefined();
 	});
+	$('button#location-option-current').click(function() {
+		$('.select-localisation').hide();
+		$('.search-localisation').show();
+		initLocation();
+	});
+	$('button#location-option-find').click(function() {		
+		$('.select-localisation').hide();
+		$('.panel-map').show();
+		initialize();
+	});
 	$('button#localistion-failure').click(function() {
 		proceed();
+	});
+	$('button#select-location').click(function() {
+		$('button#select-location').html('<i class="fa fa-refresh fa-spin"></i>');
+		params.lat = $('#latBox').val();
+		params.long = $('#lngBox').val();
+		initLocation();
 	});
 	$('button#spin').click(function() {
 		spin();
@@ -21,10 +44,15 @@ $(document).ready(function() {
 	$('canvas#confetti-world').click(function() {
 		proceed();
 	});
+	$('input#shareLink').click(function() {
+		$(this).select();
+	});
 });
 
 function proceed() {
+	$('.select-localisation').hide();
 	$('.localisation').hide();
+	$('.panel-map').hide();
 	$('.result').hide();
 	
 	//Clear confetti canvas
