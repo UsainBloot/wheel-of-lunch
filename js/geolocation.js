@@ -20,7 +20,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			}
 			
 			rangeCounter++;
-			getPlacesAjax(latitude, longitude, parseInt(radius) + radiusIncremental, maxPlaces);
+			getPlacesAjax(latitude, longitude, parseInt(radius) + radiusIncremental, placeType, maxPlaces);
 		} else {
 			restaurants = data;
 			initialPlaces = 0;
@@ -130,7 +130,3 @@ var defaultPlaceType = "restaurant";
 var defaultMaxPlaces = 12;
 var initialPlaces = 12;
 var params = getUrlParams();
-
-initLocation();
-
-

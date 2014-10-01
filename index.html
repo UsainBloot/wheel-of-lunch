@@ -4,18 +4,40 @@
 	<title>Wheel of Lunch</title>
 	<!-- Stylesheets -->
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<!-- Scripts -->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnM4OGSqM7nNwL5YXIjJikowkI9fEwXp8&libraries=places"></script>
+	<script type="text/javascript" src="js/map.js"></script>
 	<!-- Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=1">
 </head>
 <body>
-	<div class="panel panel-default localisation">
+	<div class="panel panel-default select-localisation">
+		<div class="panel-body">
+			<p>Please select an option</p>
+			<button type="button" id="location-option-current" class="btn btn-success">Use my location</button>
+			<button type="button" id="location-option-find" class="btn btn-info">Find a location</button>
+		</div>
+	</div>
+
+	<div class="panel panel-default localisation search-localisation" style="display:none;">
 		<div class="panel-body">
 			<p>Hang on a moment, we are just getting your location<span class="one">.</span><span class="two">.</span><span class="three">.</span></p>
+		</div>
+	</div>
+
+	<div class="panel panel-default panel-map" style="display:none;">
+		<div class="panel-body">
+			<div id="map-header">
+				<input type="text" id="search" class="controls" name="search" placeholder="Enter postcode or place name"/>
+				<button type="button" id="select-location" class="btn btn-primary btn-lg">Select Location</button>
+				<input type="hidden" name="lat" id="latBox" disabled/>
+				<input type="hidden" name="lng" id="lngBox" disabled/>
+			</div>
+			<div id="map-canvas"></div>
 		</div>
 	</div>
 	

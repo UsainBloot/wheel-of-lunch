@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Google Maps JavaScript API</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+		html, body { 
+			height: 100%; 
+			margin: 0; 
+			padding: 0;
+		}
+
+		.content {
+			width:1200px;
+			margin: 0 auto;
+		}
+		
+		.leftHalf {
+			width: 50%;
+			height:220px;
+			display: inline-block;
+		}
+
+		.rightHalf {
+			width: 50%;
+			height:220px;
+			float: right;
+			display: inline-block;
+		}
+
+		.jumbotron {
+			background-color: #ffffff;
+			margin-bottom: 0px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			padding-left: 0px;
+			text-align: right;
+		}
+
+		input[type="text"]#search {
+			border: 0;
+			font-size: 36px;
+			height: 70px;
+			padding: 0;
+			width: 80%;
+			letter-spacing: -0.02em;
+			font-family: inherit;
+			font-weight: 500;
+			line-height: 1.1;
+			color: inherit;
+			outline: none;
+			background: #fff;
+			-webkit-appearance: none;
+			border-radius: 4px;
+			text-align: left;
+			margin-bottom: 10px;
+			margin-top: 50px;
+		}
+		
+		label[for="lat"], label[for="lng"] {
+			width: 250px;
+			text-align: left;
+			display: block;
+		}
+
+		input[type="text"]#latBox, input[type="text"]#lngBox {
+			border: 0;
+			font-size: 16px;
+			padding: 0;
+			letter-spacing: -0.02em;
+			font-family: inherit;
+			font-weight: 500;
+			line-height: 1.1;
+			color: inherit;
+			outline: none;
+			background: #fff;
+			-webkit-appearance: none;
+			border-radius: 4px;
+			text-align: right;
+			float: right;
+		}
+
+		#map-canvas {
+			height: -moz-calc(100% - 220px);
+		    height: -webkit-calc(100% - 220px);
+		    height: calc(100% - 220px);
+			margin: 0;
+			padding: 0;
+		}
+
+		#target {
+	        width: 345px; 
+	   	}
+		
+		.pac-container {
+			box-shadow: none;
+			border-top: 0;
+		}
+		
+	   	.pac-item {
+			border-top: 0;
+		}
+	</style>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnM4OGSqM7nNwL5YXIjJikowkI9fEwXp8&libraries=places"></script>
+	<script src="js/map.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="leftHalf">
+				<input type="text" id="search" class="controls" name="search" placeholder="Search"/>
+				<label for="lat">Lat:<input type="text" name="lat" id="latBox" disabled/></label>
+				<label for="lng">Long:<input type="text" name="lng" id="lngBox" disabled/></label>
+			</div>
+
+			<div class="jumbotron rightHalf">
+				<h1><img src="http://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_Google_2013_Official.svg" height=63 /> Maps</h1>
+				<h2>JavaScript API</h2>
+			</div>
+		</div>
+
+		<div id="map-canvas"></div>
+
+		<div class="content">
+		</div>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+</html>
