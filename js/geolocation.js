@@ -1,3 +1,12 @@
+var crd;
+var rangeCounter = 0;
+var defaultRadius = 300;
+var radiusIncremental = 50;
+var defaultPlaceType = "restaurant";
+var defaultMaxPlaces = 12;
+var initialPlaces = 12;
+var params = getUrlParams();
+
 function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 	restaurants = new Array(maxPlaces);
 	
@@ -121,12 +130,3 @@ function initLocation() {
 		navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 	}
 }
-
-var crd;
-var rangeCounter = 0;
-var defaultRadius = 300;
-var radiusIncremental = 50;
-var defaultPlaceType = "restaurant";
-var defaultMaxPlaces = 12;
-var initialPlaces = 12;
-var params = getUrlParams();

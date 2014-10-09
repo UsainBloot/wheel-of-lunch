@@ -23,7 +23,7 @@ function initialize() {
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     var places = searchBox.getPlaces();
 
-    if (places.length == 0) {
+    if (places.length === 0) {
       return;
     }
     for (var i = 0, marker; marker = markers[i]; i++) {
@@ -33,7 +33,7 @@ function initialize() {
     // For each place, get the icon, place name, and location.
     markers = [];
     var bounds = new google.maps.LatLngBounds();
-    for (var i = 0, place; place = places[i]; i++) {
+    for (var j = 0, place; place = places[j]; j++) {
       var image = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -43,7 +43,7 @@ function initialize() {
       };
 
       // Create a marker for each place.
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         map: map,
         icon: image,
         title: place.name,
