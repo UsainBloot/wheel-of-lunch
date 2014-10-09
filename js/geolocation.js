@@ -19,7 +19,6 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 				"minPrice=" + "0" + "&" +
 				"maxPrice=" + "4",
 	function( data ) {
-		console.log(data);
 		if(data.length < initialPlaces && rangeCounter < 11) {
 			if(rangeCounter > 3) {
 				radiusIncremental = 100;
@@ -30,6 +29,9 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			
 			rangeCounter++;
 			getPlacesAjax(latitude, longitude, parseInt(radius) + radiusIncremental, placeType, maxPlaces);
+		} else if(data.length === 0) {
+			$('.panel-map').hide();
+			positionError({code:0, message:'Zero results found after incremental search'});
 		} else {
 			restaurants = data;
 			initialPlaces = 0;
