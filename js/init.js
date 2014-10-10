@@ -16,7 +16,7 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
-	$('button#search').click(function() {
+	$('button#search, button#settings-search').click(function() {
 		searchUserDefined();
 	});
 	$('button#location-option-current').click(function() {
