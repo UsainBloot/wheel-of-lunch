@@ -1,11 +1,15 @@
-var crd;
-var rangeCounter = 0;
-var defaultRadius = 300;
-var radiusIncremental = 50;
-var defaultPlaceType = "restaurant";
-var defaultMaxPlaces = 12;
-var initialPlaces = 12;
-var params = getUrlParams();
+var crd, rangeCounter, defaultRadius, radiusIncremental, defaultPlaceType, defaultMaxPlaces, initialPlaces ,params;
+reset();
+	
+function reset() {
+	rangeCounter = 0;
+	defaultRadius = 300;
+	radiusIncremental = 50;
+	defaultPlaceType = "restaurant";
+	defaultMaxPlaces = 12;
+	initialPlaces = 12;
+	params = getUrlParams();
+}
 
 function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 	restaurants = new Array(maxPlaces);
@@ -38,7 +42,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			$('#radius').val(radius);
 			drawRouletteWheel();
 			proceed();
-			$('#search').html('<span class="glyphicon glyphicon-search"></span>  Search');
+			$('#settings-search').html('<span class="glyphicon glyphicon-search"></span>  Search');
 		}
 	});
 }
@@ -71,7 +75,7 @@ function positionError(err) {
 }
 
 function searchUserDefined() {
-	$('#search').html('<i class="fa fa-refresh fa-spin"></i>');
+	$('#settings-search').html('<i class="fa fa-refresh fa-spin"></i>');
 	getPlacesAjax(
 					$('#latitude').val(), 
 					$('#longitude').val(), 

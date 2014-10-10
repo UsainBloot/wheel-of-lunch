@@ -167,9 +167,9 @@ div.input-group input {
 .one {
   opacity: 0;
   -webkit-animation: dot 1.3s infinite;
-  -webkit-animation-delay: 0.0s;
+  -webkit-animation-delay: 0s;
   animation: dot 1.3s infinite;
-  animation-delay: 0.0s; }
+  animation-delay: 0s; }
 
 .two {
   opacity: 0;
@@ -194,6 +194,7 @@ div.input-group input {
 
   100% {
     opacity: 1; } }
+
 @keyframes dot {
   0% {
     opacity: 0; }
@@ -203,6 +204,7 @@ div.input-group input {
 
   100% {
     opacity: 1; } }
+
 .panel-map {
   position: absolute;
   top: 50%;
@@ -270,3 +272,10 @@ input[type="text"]#search {
 
 button#select-location {
   width: 157px; }
+
+button#new-location {
+  position: absolute;
+  bottom: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; }

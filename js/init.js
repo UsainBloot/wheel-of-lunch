@@ -47,6 +47,13 @@ $(document).ready(function() {
 	$('input#shareLink').click(function() {
 		$(this).select();
 	});
+	$('button#new-location').click(function() {
+		reset();
+		params.lat = undefined;
+		params.long = undefined;
+		blurBackground();
+		$('.select-localisation').show();
+	});
 });
 
 function proceed() {
@@ -54,6 +61,10 @@ function proceed() {
 	$('.localisation').hide();
 	$('.panel-map').hide();
 	$('.result').hide();
+	
+	//Clear google maps
+	$('#search').val('');
+	$('#select-location').text('Select Location');
 	
 	//Clear confetti canvas
 	var confetti = document.getElementById('confetti-world');

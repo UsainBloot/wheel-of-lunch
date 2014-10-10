@@ -356,3 +356,11 @@ input[type="text"]#search {
 button#select-location {
 	width: 157px;
 }
+
+button#new-location {
+	position: absolute;
+	bottom: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
