@@ -26,14 +26,16 @@ function initialize() {
     if (places.length === 0) {
       return;
     }
-    for (var i = 0, marker; marker = markers[i]; i++) {
+    for (var i = 0, marker; i < markers.length; i++) {
+      marker = markers[i];
       marker.setMap(null);
     }
 
     // For each place, get the icon, place name, and location.
     markers = [];
     var bounds = new google.maps.LatLngBounds();
-    for (var j = 0, place; place = places[j]; j++) {
+    for (var j = 0, place; j < places.length; j++) {
+      place = places[j];
       var image = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
