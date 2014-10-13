@@ -106,12 +106,14 @@ function stopRotateWheel() {
 	ctx.save();
 	
 	var resultName = restaurants[index].name.split(' ').join('+');
-	var mapURL = "http://maps.google.com/maps/search/";
-	
+	var mapURL = "http://maps.google.com/maps/dir/"; 
+	var originCoords = $('#latitude').val() + "," + $('#longitude').val();
+
+
 	//Display Result
 	$('.result h2').html(restaurants[index].name);
 	$('.result p.vicinity').html(restaurants[index].vicinity);
-	$('.result a.map').attr("href", mapURL + resultName + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
+	$('.result a.map').attr("href", mapURL + originCoords + "/" + resultName + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 	
 	ctx.restore();
 	
