@@ -109,11 +109,10 @@ function stopRotateWheel() {
 	var mapURL = "http://maps.google.com/maps/dir/"; 
 	var originCoords = $('#latitude').val() + "," + $('#longitude').val();
 
-
 	//Display Result
 	$('.result h2').html(restaurants[index].name);
 	$('.result p.vicinity').html(restaurants[index].vicinity);
-	$('.result a.map').attr("href", mapURL + originCoords + "/" + resultName + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
+	$('.result a.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 	
 	ctx.restore();
 	
