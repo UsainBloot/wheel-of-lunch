@@ -100,28 +100,13 @@ function generateShareLink() {
 
 function createURL() {
 	var url = window.location.origin + window.location.pathname,
-		params = [
-			{
-				name: 'lat',
-				value: $('#latitude').val()
-			}, {
-				name: 'long',
-				value: $('#longitude').val()
-			}, {
-				name: 'radius',
-				value: $('#radius').val()
-			}, {
-				name: 'type',
-				value: $('.settings input[type=radio]:checked').val()
-			}, {
-				name: 'maxplaces',
-				value: $('#maxPlaces').val()
-			}
-		];
+		params = {
+			lat: $('#latitude').val(),
+			long: $('#longitude').val(),
+			radius: $('#radius').val(),
+			type: $('.settings input[type=radio]:checked').val(),
+			maxplaces: $('#maxPlaces').val()
+		};
 	
-	url += '?' + params.map(function(param) {
-		return param.name + '=' + param.value;
-	}).join('&');
-
-	return url;	
+	return url + '?' + $.param(params);
 }
