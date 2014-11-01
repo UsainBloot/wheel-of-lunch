@@ -28,8 +28,7 @@ function drawRouletteWheel() {
 		textRadius = 194,
 		insideRadius = 150,
 		angle,
-		text,
-		i;
+		text;
 
 	if (!canvas.getContext) {
 		return;
@@ -44,7 +43,7 @@ function drawRouletteWheel() {
 	arc = Math.PI / (restaurants.length / 2);
 	
 	//Draw circle
-	for(i = 0; i < restaurants.length; i++) {
+	restaurants.forEach(function(restaurant, i) {
 		angle = startAngle + i * arc;
 		ctx.fillStyle = colours.bgColour[i];
 		
@@ -60,11 +59,11 @@ function drawRouletteWheel() {
 		ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
 		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
 		ctx.rotate(angle + arc / 2 + Math.PI / 2);
-		text = restaurants[i].name;
+		text = restaurant.name;
 		//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
 		printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
 		ctx.restore();
-	}
+	});
 	
 	//Arrow
 	ctx.fillStyle = "#333";
