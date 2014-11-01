@@ -99,21 +99,29 @@ function generateShareLink() {
 }
 
 function createURL() {
-	var url = window.location.href.slice(0, window.location.href.indexOf('?')) + "?";
-	var params = { 'lat': $('#latitude').val(), 
-					'long':  $('#longitude').val(), 
-					'radius': $('#radius').val(),
-					'type' : $('.settings input[type=radio]:checked').val(), 
-					'maxplaces': $('#maxPlaces').val() };
-	
-	for(var key in params) {
-		if (params[key].length > 0) {
-			if(url.substr(url.length - 1) == "?") {
-				url += key + "=" + params[key];
-			} else {
-				url += "&" + key + "=" + params[key];
+	var url = window.location.origin + window.location.pathname,
+		params = [
+			{
+				name: 'lat',
+				value: $('#latitude').val()
+			}, {
+				name: 'long',
+				value: $('#longitude').val()
+			}, {
+				name: 'radius',
+				value: $('#radius').val()
+			}, {
+				name: 'type',
+				value: $('.settings input[type=radio]:checked').val()
+			}, {
+				name: 'maxplaces',
+				value: $('#maxPlaces').val()
 			}
-		}
-	}
+		];
+	
+	url += '?' + params.map(function(param) {
+		return param.name + '=' + param.value;
+	}).join('&');
+
 	return url;	
 }
