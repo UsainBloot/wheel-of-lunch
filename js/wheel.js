@@ -25,54 +25,54 @@ var ctx;
 function drawRouletteWheel() {
 	var canvas = document.getElementById("wheel");
 	if (canvas.getContext) {
-	var outsideRadius = 250;
-	var textRadius = 194;
-	var insideRadius = 150;
-	
-	ctx = canvas.getContext("2d");
-	ctx.clearRect(0,0,width,height);
-	
-	
-	ctx.strokeStyle = "black";
-	ctx.font = "12px Helvetica, Arial";
-	
-	arc = Math.PI / (restaurants.length / 2);
-	
-	//Draw circle
-	for(var i = 0; i < restaurants.length; i++) {
-		var angle = startAngle + i * arc;
-		ctx.fillStyle = colours.bgColour[i];
+		var outsideRadius = 250,
+			textRadius = 194,
+			insideRadius = 150;
 		
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,width,height);
+		
+		
+		ctx.strokeStyle = "black";
+		ctx.font = "12px Helvetica, Arial";
+		
+		arc = Math.PI / (restaurants.length / 2);
+		
+		//Draw circle
+		for(var i = 0; i < restaurants.length; i++) {
+			var angle = startAngle + i * arc;
+			ctx.fillStyle = colours.bgColour[i];
+			
+			ctx.beginPath();
+			ctx.arc(halfWidth, halfHeight, outsideRadius, angle, angle + arc, false);
+			ctx.arc(halfWidth, halfHeight, insideRadius, angle + arc, angle, true);
+			ctx.fill();
+			
+			ctx.save();
+			
+			//Render text
+			ctx.fillStyle = colours.fontColour[i];
+			ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
+			            halfHeight + Math.sin(angle + arc / 2) * textRadius);
+			ctx.rotate(angle + arc / 2 + Math.PI / 2);
+			var text = restaurants[i].name;
+			//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+			printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
+			ctx.restore();
+		}
+		
+		//Arrow
+		ctx.fillStyle = "#333";
 		ctx.beginPath();
-		ctx.arc(halfWidth, halfHeight, outsideRadius, angle, angle + arc, false);
-		ctx.arc(halfWidth, halfHeight, insideRadius, angle + arc, angle, true);
+		ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
+		ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 25));
+		ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 15));
+		ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius + 15));
+		ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 0));
+		ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius + 15));
+		ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 15));
+		ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
 		ctx.fill();
-		
-		ctx.save();
-		
-		//Render text
-		ctx.fillStyle = colours.fontColour[i];
-		ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
-		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
-		ctx.rotate(angle + arc / 2 + Math.PI / 2);
-		var text = restaurants[i].name;
-		//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-		printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
-		ctx.restore();
-	} 
-	
-	//Arrow
-	ctx.fillStyle = "#333";
-	ctx.beginPath();
-	ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
-	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 25));
-	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 15));
-	ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius + 15));
-	ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 0));
-	ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius + 15));
-	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 15));
-	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
-	ctx.fill();
 	}
 }
 
@@ -100,14 +100,14 @@ function rotateWheel() {
 
 function stopRotateWheel() {
 	clearTimeout(spinTimeout);
-	var degrees = startAngle * 180 / Math.PI + 90;
-	var arcd = arc * 180 / Math.PI;
-	var index = Math.floor((360 - degrees % 360) / arcd);
+	var degrees = startAngle * 180 / Math.PI + 90,
+		arcd = arc * 180 / Math.PI,
+		index = Math.floor((360 - degrees % 360) / arcd);
 	ctx.save();
 	
-	var resultName = restaurants[index].name.split(' ').join('+');
-	var mapURL = "http://maps.google.com/maps/dir/"; 
-	var originCoords = $('#latitude').val() + "," + $('#longitude').val();
+	var resultName = restaurants[index].name.split(' ').join('+'),
+		mapURL = "http://maps.google.com/maps/dir/",
+		originCoords = $('#latitude').val() + "," + $('#longitude').val();
 
 	//Display Result
 	$('.result h2').html(restaurants[index].name);
@@ -124,13 +124,12 @@ function stopRotateWheel() {
 }
 
 function easeOut(t, b, c, d) {
-	var ts = (t/=d)*t;
-	var tc = ts*t;
+	var ts = (t/=d)*t,
+		tc = ts*t;
 	return b+c*(tc + -3*ts + 3*t);
 }
 
-function printAt(context, text, x, y, lineHeight, fitWidth)
-{
+function printAt(context, text, x, y, lineHeight, fitWidth) {
     fitWidth = fitWidth || 0;
     
     if (fitWidth <= 0) {
