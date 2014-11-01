@@ -143,16 +143,17 @@
 			originCoords = $('#latitude').val() + "," + $('#longitude').val();
 
 		//Display Result
-		$('.result h2').html(restaurants[index].name);
-		$('.result p.vicinity').html(restaurants[index].vicinity);
-		$('.result a.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
+		var $result = $('.result');
+		$result.find('h2').html(restaurants[index].name);
+		$result.find('.vicinity').html(restaurants[index].vicinity);
+		$result.find('.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 		
 		ctx.restore();
 		
 		//Start confetti
-		$('.result').show();
+		$result.show();
 		blurBackground();
-		$('canvas#confetti-world').show();
+		$('#confetti-world').show();
 		init();
 	};
 
