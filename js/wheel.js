@@ -23,57 +23,61 @@ var spinVelocity = 2000;
 var ctx;
 
 function drawRouletteWheel() {
-	var canvas = document.getElementById("wheel");
-	if (canvas.getContext) {
-		var outsideRadius = 250,
-			textRadius = 194,
-			insideRadius = 150;
-		
-		ctx = canvas.getContext("2d");
-		ctx.clearRect(0,0,width,height);
-		
-		
-		ctx.strokeStyle = "black";
-		ctx.font = "12px Helvetica, Arial";
-		
-		arc = Math.PI / (restaurants.length / 2);
-		
-		//Draw circle
-		for(var i = 0; i < restaurants.length; i++) {
-			var angle = startAngle + i * arc;
-			ctx.fillStyle = colours.bgColour[i];
-			
-			ctx.beginPath();
-			ctx.arc(halfWidth, halfHeight, outsideRadius, angle, angle + arc, false);
-			ctx.arc(halfWidth, halfHeight, insideRadius, angle + arc, angle, true);
-			ctx.fill();
-			
-			ctx.save();
-			
-			//Render text
-			ctx.fillStyle = colours.fontColour[i];
-			ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
-			            halfHeight + Math.sin(angle + arc / 2) * textRadius);
-			ctx.rotate(angle + arc / 2 + Math.PI / 2);
-			var text = restaurants[i].name;
-			//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-			printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
-			ctx.restore();
-		}
-		
-		//Arrow
-		ctx.fillStyle = "#333";
-		ctx.beginPath();
-		ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
-		ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 25));
-		ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 15));
-		ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius + 15));
-		ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 0));
-		ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius + 15));
-		ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 15));
-		ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
-		ctx.fill();
+	var canvas = document.getElementById("wheel"),
+		outsideRadius = 250,
+		textRadius = 194,
+		insideRadius = 150,
+		angle,
+		text,
+		i;
+
+	if (!canvas.getContext) {
+		return;
 	}
+	
+	ctx = canvas.getContext("2d");
+	ctx.clearRect(0,0,width,height);
+	
+	ctx.strokeStyle = "black";
+	ctx.font = "12px Helvetica, Arial";
+	
+	arc = Math.PI / (restaurants.length / 2);
+	
+	//Draw circle
+	for(i = 0; i < restaurants.length; i++) {
+		angle = startAngle + i * arc;
+		ctx.fillStyle = colours.bgColour[i];
+		
+		ctx.beginPath();
+		ctx.arc(halfWidth, halfHeight, outsideRadius, angle, angle + arc, false);
+		ctx.arc(halfWidth, halfHeight, insideRadius, angle + arc, angle, true);
+		ctx.fill();
+		
+		ctx.save();
+		
+		//Render text
+		ctx.fillStyle = colours.fontColour[i];
+		ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
+		            halfHeight + Math.sin(angle + arc / 2) * textRadius);
+		ctx.rotate(angle + arc / 2 + Math.PI / 2);
+		text = restaurants[i].name;
+		//ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+		printAt(ctx, text, -ctx.measureText(text).width / 2, 0, 14, ((2 * Math.PI * textRadius) / restaurants.length) - 10);
+		ctx.restore();
+	}
+	
+	//Arrow
+	ctx.fillStyle = "#333";
+	ctx.beginPath();
+	ctx.moveTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 25));
+	ctx.lineTo(halfWidth + 4, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth + 9, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth + 0, halfHeight - (outsideRadius - 0));
+	ctx.lineTo(halfWidth - 9, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 15));
+	ctx.lineTo(halfWidth - 4, halfHeight - (outsideRadius + 25));
+	ctx.fill();
 }
 
 function spin() {	
