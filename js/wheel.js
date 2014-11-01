@@ -164,16 +164,15 @@
 			return;
 		}
 		
-		for (var idx = 1; idx <= text.length; idx++) {
-			var str = text.substr(0, idx);
+		var str, splitDash, headText, tailText, idx;
+
+		for (idx = 1; idx <= text.length; idx++) {
+			str = text.substr(0, idx);
 			
 			if (context.measureText(str).width > fitWidth) {
-				var splitDash = "";
-				if(text.charAt(idx-2) != " ") {
-					splitDash = "-";
-				}
-				var headText = text.substr(0, idx-1) + splitDash;
-				var tailText = text.substr(idx-1);
+				splitDash = (text.charAt(idx-2) != " ") ? "-" : "";
+				headText = text.substr(0, idx-1) + splitDash;
+				tailText = text.substr(idx-1);
 				context.fillText( headText, -context.measureText(headText).width / 2, y - lineHeight);
 				rouletteWheel.printAt(context, tailText, -context.measureText(tailText).width / 2, y + lineHeight, lineHeight,  fitWidth - 10);
 				return;
