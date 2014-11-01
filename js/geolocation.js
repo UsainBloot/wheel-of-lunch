@@ -101,38 +101,36 @@ function getUrlParams() {
 function initLocation() {
 	drawRouletteWheel();
 	
-	if(params.length >= 0) {
-		
-		if(params.radius !== undefined) {
-			defaultRadius = params.radius;
-			initialPlaces = 0;
-		}
-		
-		if(params.maxplaces !== undefined) {
-			defaultMaxPlaces = parseInt(params.maxplaces);
-			initialPlaces = 0;
-		}
-		
-		if(params.type !== undefined) {
-			defaultPlaceType = params.type;
-			initialPlaces = 0;
-		}
-		
-		if(params.lat === undefined || params.long === undefined) {
-			navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
-		} else {
-			crd = { 'latitude': params.lat, 'longitude': params.long};
-			
-			$('#type-' + defaultPlaceType).prop('checked', true);
-			$('#latitude').val(crd.latitude);
-			$('#longitude').val(crd.longitude);
-			$('#radius').val(defaultRadius);
-			$('#maxPlaces').val(defaultMaxPlaces);
-			
-			getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultPlaceType, defaultMaxPlaces);
-		}
-		
-	} else {
+	if(params.length == 0 || params.lat === undefined || params.long === undefined) {
 		navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+		return;
 	}
+		
+	if(params.radius !== undefined) {
+		defaultRadius = params.radius;
+		initialPlaces = 0;
+	}
+	
+	if(params.maxplaces !== undefined) {
+		defaultMaxPlaces = parseInt(params.maxplaces);
+		initialPlaces = 0;
+	}
+	
+	if(params.type !== undefined) {
+		defaultPlaceType = params.type;
+		initialPlaces = 0;
+	}
+
+	crd = {
+		'latitude': params.lat,
+		'longitude': params.long
+	};
+	
+	$('#type-' + defaultPlaceType).prop('checked', true);
+	$('#latitude').val(crd.latitude);
+	$('#longitude').val(crd.longitude);
+	$('#radius').val(defaultRadius);
+	$('#maxPlaces').val(defaultMaxPlaces);
+	
+	getPlacesAjax(crd.latitude, crd.longitude, defaultRadius, defaultPlaceType, defaultMaxPlaces);
 }
