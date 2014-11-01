@@ -16,38 +16,38 @@ $(document).ready(function() {
 	$('a.settings').click(function() {
 		toggleSettings();
 	});
-	$('button#search, button#settings-search').click(function() {
+	$('#search, #settings-search').click(function() {
 		searchUserDefined();
 	});
-	$('button#location-option-current').click(function() {
+	$('#location-option-current').click(function() {
 		$('.select-localisation').hide();
 		$('.search-localisation').show();
 		initLocation();
 	});
-	$('button#location-option-find').click(function() {		
+	$('#location-option-find').click(function() {		
 		$('.select-localisation').hide();
 		$('.panel-map').show();
 		initialize();
 	});
-	$('button#localistion-failure').click(function() {
+	$('#localistion-failure').click(function() {
 		proceed();
 	});
-	$('button#select-location').click(function() {
-		$('button#select-location').html('<i class="fa fa-refresh fa-spin"></i>');
+	$('#select-location').click(function() {
+		$(this).html('<i class="fa fa-refresh fa-spin"></i>');
 		params.lat = $('#latBox').val();
 		params.long = $('#lngBox').val();
 		initLocation();
 	});
-	$('button#spin').click(function() {
+	$('#spin').click(function() {
 		spin();
 	});
-	$('canvas#confetti-world').click(function() {
+	$('#confetti-world').click(function() {
 		proceed();
 	});
-	$('input#shareLink').click(function() {
+	$('#shareLink').click(function() {
 		$(this).select();
 	});
-	$('button#new-location').click(function() {
+	$('#new-location').click(function() {
 		reset();
 		params.lat = undefined;
 		params.long = undefined;
