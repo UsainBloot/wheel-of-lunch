@@ -40,7 +40,7 @@ function getPlacesAjax(latitude, longitude, radius, placeType, maxPlaces) {
 			restaurants = data;
 			initialPlaces = 0;
 			$('#radius').val(radius);
-			drawRouletteWheel();
+			rouletteWheel.draw();
 			proceed();
 			$('#settings-search').html('<span class="glyphicon glyphicon-search"></span>  Search');
 		}
@@ -71,7 +71,7 @@ function positionError(err) {
 	                {name:"Marks & Spencer", lat:"", lng:"", vicinity:""}, {name:"Waitrose", lat:"", lng:"", vicinity:""},
 	                {name:"Strada", lat:"", lng:"", vicinity:""}, {name:"Zizzi's", lat:"", lng:"", vicinity:""}, 
 	                {name:"Las Iguanas", lat:"", lng:"", vicinity:""}, {name:"Byron", lat:"", lng:"", vicinity:""}];
-	drawRouletteWheel();
+	rouletteWheel.draw();
 }
 
 function searchUserDefined() {
@@ -99,9 +99,9 @@ function getUrlParams() {
 }
 
 function initLocation() {
-	drawRouletteWheel();
+	rouletteWheel.draw();
 	
-	if(params.length == 0 || params.lat === undefined || params.long === undefined) {
+	if(params.length === 0 || params.lat === undefined || params.long === undefined) {
 		navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 		return;
 	}

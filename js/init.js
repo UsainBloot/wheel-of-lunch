@@ -6,7 +6,7 @@ var restaurants = [{name:"Wendy's", lat:"", lng:"", vicinity:""}, {name:"McDonal
 	                {name:"Arby's", lat:"", lng:"", vicinity:""}, {name:"Indian", lat:"", lng:"", vicinity:""}];
 
 $(document).ready(function() {
-	drawRouletteWheel();
+	rouletteWheel.draw();
 
 	if(params.length > 0){
 		initLocation();
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		initLocation();
 	});
 	$('#spin').click(function() {
-		spin();
+		rouletteWheel.spin();
 	});
 	$('#confetti-world').click(function() {
 		proceed();
