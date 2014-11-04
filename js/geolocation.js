@@ -101,7 +101,7 @@ function getUrlParams() {
 function initLocation() {
 	rouletteWheel.draw();
 	
-	if(params.length === 0 || params.lat === undefined || params.long === undefined) {
+	if(Object.keys(params).length === 0 || params.lat === undefined || params.long === undefined) {
 		navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
 		return;
 	}
