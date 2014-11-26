@@ -57,6 +57,8 @@ class PlacesAPI {
 	
 }
 
+header('Access-Control-Allow-Origin: http://usainbloot.github.io');
+
 $api = new PlacesAPI;
 $api -> getPlaces($_GET['latitude'],
 				  $_GET['longitude'],
