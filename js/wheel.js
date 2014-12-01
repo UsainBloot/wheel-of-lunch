@@ -119,10 +119,10 @@
 		spinTime = 0;
 		spinTimeTotal = Math.random() * 3 + 4 * spinVelocity;
 		closeSettings();
-		if(isSpinning == false && isForward) {
+		if(isSpinning === false && isForward) {
 			isSpinning = true;
 			rouletteWheel.rotate(true);
-		} else if (isSpinning == false && !isForward) {
+		} else if (isSpinning === false && !isForward) {
 			isSpinning = true;
 			rouletteWheel.rotate(false);
 		}
@@ -130,11 +130,11 @@
 
 	rouletteWheel.retIsSpinning = function() {
 		return isSpinning;
-	}
+	};
 
 	rouletteWheel.addToStartAngle = function(angle) {
 		startAngle += angle;
-	}	
+	};	
 
 	rouletteWheel.rotate = function(isForward) {
 		spinTime += 30;
@@ -176,14 +176,14 @@
 		$result.find('h2').html(restaurants[index].name);
 		$result.find('.vicinity').html(restaurants[index].vicinity);
 
-		if(restaurants[index].rating == null){
-			var ratingString = "Rating: Unavailable"
+		if(restaurants[index].rating === null){
+			var ratingString = "Rating: Unavailable";
 		}
 		else{
 			var ratingString = "Rating: " + (restaurants[index].rating);
 		}
 		$result.find('.rating').html(ratingString);
-		$result.find('')
+		$result.find('');
 		$result.find('.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 		
 		ctx.restore();

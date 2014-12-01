@@ -55,7 +55,7 @@ $(document).ready(function() {
 		previousDragX = e.pageX;
 		previousDragY = e.pageY;
 		isDragging = true;
-	})
+	});
 	$('#wheel').mousemove(function(e) {
 		if(isDragging && !rouletteWheel.retIsSpinning()) {
 			currentDragX = e.pageX;
