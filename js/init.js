@@ -6,6 +6,11 @@ var restaurants = [{name:"Wendy's", lat:"", lng:"", vicinity:""}, {name:"McDonal
 	                {name:"Arby's", lat:"", lng:"", vicinity:""}, {name:"Indian", lat:"", lng:"", vicinity:""}];
 
 $(document).ready(function() {
+    var isDragging = false;
+	var previousDragX, previousDragY, currentDragX, currentDragY, clickedX, clickedY;
+	var arcAngle = 0;
+	var changedAngle = 0;
+
 	rouletteWheel.draw();
 
 	if(params.length > 0){
@@ -39,7 +44,55 @@ $(document).ready(function() {
 		initLocation();
 	});
 	$('#spin').click(function() {
-		rouletteWheel.spin();
+		if(!rouletteWheel.retIsSpinning()) {
+			rouletteWheel.spin(true);
+		}
+	});
+	$('#wheel').mousedown(function(e) {
+		clickedX = e.pageX;
+		clickedY = e.pageY;
+		//set up the first instance of previous drag
+		previousDragX = e.pageX;
+		previousDragY = e.pageY;
+		isDragging = true;
+	});
+	$('#wheel').mousemove(function(e) {
+		if(isDragging && !rouletteWheel.retIsSpinning()) {
+			currentDragX = e.pageX;
+			currentDragY = e.pageY;
+
+			//finding the movement from the last drag
+			changedAngle = Math.atan2(currentDragY - $('#spin').position().top, currentDragX - $('#spin').position().left);
+			changedAngle -= Math.atan2(previousDragY - $('#spin').position().top, previousDragX - $('#spin').position().left);
+
+			//recalculating the arc from when the mouse was firsted click -- used to indicate a 'spin'
+			arcAngle = Math.atan2(currentDragY - $('#spin').position().top, currentDragX - $('#spin').position().left);
+			arcAngle -= Math.atan2(clickedY - $('#spin').position().top, clickedX - $('#spin').position().left);
+
+
+			//add whatever the angle has changed by from the last movement of the mouse
+			rouletteWheel.addToStartAngle(changedAngle);
+			rouletteWheel.draw(true);
+
+			//update the previous with the current coordinate of the mouse
+			previousDragY = currentDragY;
+			previousDragX = currentDragX;
+		} 
+	});
+	$('#wheel').mouseup(function(e) {
+		if((arcAngle >= 0.5) && !rouletteWheel.retIsSpinning() && changedAngle > 0) { // a minimum delta of rad = 0.5 required to drag around the wheel to count as a 'spin' 
+			rouletteWheel.spin(true);
+		} else if((arcAngle < -4) && !rouletteWheel.retIsSpinning() && changedAngle > 0) {
+			rouletteWheel.spin(true);
+		} else if((arcAngle <= -0.5) && !rouletteWheel.retIsSpinning() && changedAngle < 0) {
+			rouletteWheel.spin(false);
+		} else if((arcAngle > 4) && !rouletteWheel.retIsSpinning() && changedAngle < 0) {
+			rouletteWheel.spin(false);
+		} 
+		isDragging = false;
+	});
+	$('#wheel').mouseout(function(e) {
+		isDragging = false;
 	});
 	$('#confetti-world').click(function() {
 		proceed();
