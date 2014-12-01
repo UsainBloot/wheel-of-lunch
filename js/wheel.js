@@ -194,7 +194,6 @@
 		$result.show();
 		blurBackground();
 		$('#confetti-world').show();
-		init();
 	};
 
 	rouletteWheel.printAt = function(context, text, x, y, lineHeight, fitWidth) {

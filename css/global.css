@@ -1,5 +1,5 @@
-/* Variables */
 @import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+/* Variables */
 #confetti-world {
   display: none;
   position: fixed;
@@ -15,6 +15,9 @@
   height: 600px;
   margin: -300px 0 0 -300px;
   z-index: 0; }
+
+#wheel:active {
+  cursor: pointer; }
 
 button, button:hover {
   transition: all 0.3s ease-out; }

@@ -8,19 +8,19 @@ $button-height: 40px;
 $settings-width: 340px;
 $settings-height: 350px;
 
-$select-localisation-width:300px;
-$select-localisation-height:96px;
+$select-localisation-width: 300px;
+$select-localisation-height: 96px;
 
-$localisation-width:400px;
-$localisation-height:50px;
+$localisation-width: 400px;
+$localisation-height: 50px;
 
-$result-width:500px;
-$result-height:150px;
+$result-width: 500px;
+$result-height: 150px;
 
 $clickme-left: 46px;
 
-$map-panel-width:1000px;
-$map-panel-height:600px;
+$map-panel-width: 1000px;
+$map-panel-height: 600px;
 
 $map-header-height: 100px;
 
@@ -41,11 +41,15 @@ $map-header-height: 100px;
 	width: $wheel-width;
 	height: $wheel-height;
 	margin: (-$wheel-height / 2) 0 0 (-$wheel-width / 2);
-	z-index:0;
+	z-index: 0;
+}
+
+#wheel:active {
+	cursor: pointer;
 }
 
 button, button:hover{
-	transition:all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
 
 button:focus {
@@ -55,7 +59,7 @@ button:focus {
 button#spin {
 	position: absolute;
 	top: 50%;
-	left:50%;
+	left: 50%;
 	width: $button-width;
 	height: $button-height;
 	margin: (-$button-height / 2) 0 0 (-$button-width / 2);
@@ -72,7 +76,7 @@ button#spin {
 	margin: (-$select-localisation-height / 2) 0 0 (-$select-localisation-width / 2);
 	z-index: 3;
 	p {
-		text-align:center;
+		text-align: center;
 	}
 }
 
@@ -85,7 +89,7 @@ button#spin {
 	margin: (-$localisation-height / 2) 0 0 (-$localisation-width / 2);
 	z-index: 3;
 	p {
-		text-align:center;
+		text-align: center;
 	}
 }
 
@@ -154,11 +158,11 @@ div.settings {
 }
 
 a.settings {
-	position:absolute;
-	top:0px;
-	left:0px;
-	font-size:24px;
-	padding:5px 5px 0px 5px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-size: 24px;
+	padding: 5px 5px 0px 5px;
 	-moz-border-radius: 0 4px 4px 0;
 	-webkit-border-radius: 0 4px 4px 0;
 	border-radius: 0 4px 4px 0;
@@ -170,8 +174,8 @@ a.settings {
 
 a.settings:hover {
 		
-	position:absolute;
-	left:5px;
+	position: absolute;
+	left: 5px;
 	-webkit-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
     cursor: pointer;
@@ -284,7 +288,7 @@ div.input-group {
 	height: $map-panel-height;
 	margin: (-$map-panel-height / 2) 0 0 (-$map-panel-width / 2);
 	z-index: 3;
-	padding:0;
+	padding: 0;
 	> .panel-body {
 		height: 100%;
 		padding: 0;

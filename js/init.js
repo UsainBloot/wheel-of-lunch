@@ -107,6 +107,9 @@ $(document).ready(function() {
 		blurBackground();
 		$('.select-localisation').show();
 	});
+	
+	// Start confetti - will still be hidden
+	window.init();
 });
 
 function proceed() {
