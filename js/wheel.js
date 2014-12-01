@@ -175,6 +175,15 @@
 		var $result = $('.result');
 		$result.find('h2').html(restaurants[index].name);
 		$result.find('.vicinity').html(restaurants[index].vicinity);
+
+		if(restaurants[index].rating == null){
+			var ratingString = "Rating: Unavailable"
+		}
+		else{
+			var ratingString = "Rating: " + (restaurants[index].rating);
+		}
+		$result.find('.rating').html(ratingString);
+		$result.find('')
 		$result.find('.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 		
 		ctx.restore();
