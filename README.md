@@ -9,6 +9,8 @@ Wheel of Lunch is a website which determines where a user should go for lunch. T
 * Get location via Google Maps or by current location.
 * Variable search parameters.
 * View selected place on Google Maps.
+* View rating out of 5 for selected place
+* Spin the wheel using click-and-drag or spin button
 * Location search net increments when few results are found (for rural areas).
 * Search for "restuaraunts", "food" or "bar".
 * Shareable url links (allows others to view the same results).
