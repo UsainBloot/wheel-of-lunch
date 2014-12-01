@@ -176,11 +176,13 @@
 		$result.find('h2').html(restaurants[index].name);
 		$result.find('.vicinity').html(restaurants[index].vicinity);
 
+		var $ratingString = " ";
+
 		if(restaurants[index].rating === null){
-			var ratingString = "Rating: Unavailable";
+			ratingString = "Rating: Unavailable";
 		}
 		else{
-			var ratingString = "Rating: " + (restaurants[index].rating);
+			ratingString = "Rating: " + (restaurants[index].rating);
 		}
 		$result.find('.rating').html(ratingString);
 		$result.find('');
