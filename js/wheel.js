@@ -38,6 +38,8 @@
 		arc = Math.PI / (restaurants.length / 2),
 		spinTimeout = null,
 
+		isSpinning = false,
+
 		spinArcStart = 10,
 		spinTime = 0,
 		spinTimeTotal = 0,
@@ -72,6 +74,9 @@
 		
 		arc = Math.PI / (restaurants.length / 2);
 		
+		//Write words on arc path
+		var str = "Click and Drag Mouse Clockwise!";
+
 		//Draw circle
 		restaurants.forEach(function(restaurant, i) {
 			angle = startAngle + i * arc;
@@ -83,7 +88,7 @@
 			ctx.fill();
 			
 			ctx.save();
-			
+
 			//Render text
 			ctx.fillStyle = colours.fontColour[i];
 			ctx.translate(halfWidth + Math.cos(angle + arc / 2) * textRadius, 
@@ -109,35 +114,59 @@
 		ctx.fill();
 	};
 
-	rouletteWheel.spin = function() {	
+	rouletteWheel.spin = function(isForward) {	
 		spinAngleStart = Math.random() * 10 + 10;
 		spinTime = 0;
 		spinTimeTotal = Math.random() * 3 + 4 * spinVelocity;
 		closeSettings();
-		rouletteWheel.rotate();
+		if(isSpinning === false && isForward) {
+			isSpinning = true;
+			rouletteWheel.rotate(true);
+		} else if (isSpinning === false && !isForward) {
+			isSpinning = true;
+			rouletteWheel.rotate(false);
+		}
 	};
 
-	rouletteWheel.rotate = function() {
+	rouletteWheel.retIsSpinning = function() {
+		return isSpinning;
+	};
+
+	rouletteWheel.addToStartAngle = function(angle) {
+		startAngle += angle;
+	};	
+
+	rouletteWheel.rotate = function(isForward) {
 		spinTime += 30;
 		if(spinTime >= spinTimeTotal) {
 			rouletteWheel.stopRotate();
+			isSpinning = false;
 			return;
 		}
 		var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-		startAngle += (spinAngle * Math.PI / 180);
+		if(isForward) {
+			startAngle += (spinAngle * Math.PI / 180);
+		} else {
+			startAngle -= (spinAngle * Math.PI / 180);
+		}
 		rouletteWheel.draw();
 		spinTimeout = setTimeout(function() { 
-			rouletteWheel.rotate();	
+			rouletteWheel.rotate(isForward);	
 		}, 30);
 	};
-
+	
 	rouletteWheel.stopRotate = function() {
 		clearTimeout(spinTimeout);
 		var degrees = startAngle * 180 / Math.PI + 90,
 			arcd = arc * 180 / Math.PI,
 			index = Math.floor((360 - degrees % 360) / arcd);
 		ctx.save();
-		
+				
+		if(degrees < 0) {
+			degrees = Math.abs(degrees);
+			index = Math.floor((degrees % 360) / arcd);
+		}
+
 		var resultName = restaurants[index].name.split(' ').join('+'),
 			mapURL = "http://maps.google.com/maps/dir/",
 			originCoords = $('#latitude').val() + "," + $('#longitude').val();
@@ -146,6 +175,17 @@
 		var $result = $('.result');
 		$result.find('h2').html(restaurants[index].name);
 		$result.find('.vicinity').html(restaurants[index].vicinity);
+
+		var $ratingString = " ";
+
+		if(restaurants[index].rating === null){
+			ratingString = "Rating: Unavailable";
+		}
+		else{
+			ratingString = "Rating: " + (restaurants[index].rating);
+		}
+		$result.find('.rating').html(ratingString);
+		$result.find('');
 		$result.find('.map').attr("href", mapURL + originCoords + "/" + resultName + "," + restaurants[index].vicinity + "/@" + restaurants[index].lat + "," + restaurants[index].lng);
 		
 		ctx.restore();
