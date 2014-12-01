@@ -38,7 +38,11 @@ class PlacesAPI {
 			$places[$i]['lat'] = $results[$i]['geometry']['location']['lat'];
 			$places[$i]['lng'] = $results[$i]['geometry']['location']['lng'];
 			$places[$i]['vicinity'] = $results[$i]['vicinity'];
-			$places[$i]['rating'] = $results[$i]['rating'];
+			if(isset($results[$i]['rating'])) {
+				$places[$i]['rating'] = $results[$i]['rating'];
+			} else {
+				$places[$i]['rating'] = null;
+			}
 			$i++;
 		}
 		
