@@ -1,7 +1,7 @@
 #Wheel of Lunch
 Wheel of Lunch is a website which determines where a user should go for lunch. The site utilises HTML5 to draw a wheel of a collection of local restaurants which is obtained from a custom RESTful API and Google Places.
 
-[Click here to view demo.](http://UsainBloot.github.io/Wheel-Of-Lunch)
+[Click here to view demo.](http://UsainBloot.github.io/wheel-Of-lunch)
 
 ##Features
 
