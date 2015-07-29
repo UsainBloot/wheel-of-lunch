@@ -24,7 +24,9 @@ config = {
     all: 'all.js'
 	},
   vendor: {
-		jsSrc: [ 'source/bower_components/jquery/dist/jquery.min.js' ]
+		jsSrc: [ 'source/bower_components/jquery/dist/jquery.min.js',
+						 'source/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+	 				 ]
 	},
   staticFiles: {
 		html: {
@@ -32,8 +34,14 @@ config = {
 			dest: 'public/'
 		},
     images: {
-			src: [ 'source/img/**/*.*', '!source/img/icons*/*.*' ],
+			src: [ 'source/img/**/*.*' ],
 			dest: 'public/img'
+		},
+		fonts: {
+			src: [ 'source/bower_components/bootstrap-sass/assets/fonts/**/*',
+						 'source/bower_components/font-awesome/fonts/*.*'
+					 ],
+			dest: 'public/fonts'
 		},
 	  clean: [ 'public' ]
 	}
@@ -55,6 +63,12 @@ gulp.task( 'move-images', function() {
 	return gulp
 		.src( config.staticFiles.images.src, { base: '' } )
 		.pipe( gulp.dest( config.staticFiles.images.dest ) )
+});
+
+gulp.task('move-fonts', function() {
+	return gulp
+		.src( config.staticFiles.fonts.src, { base: '' } )
+		.pipe( gulp.dest( config.staticFiles.fonts.dest ) )
 });
 
 gulp.task( 'styles', function() {
@@ -106,7 +120,7 @@ gulp.task( 'default', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
-		['scripts', 'vendor', 'move-html', 'move-images'],
+		['scripts', 'vendor', 'move-html', 'move-images', 'move-fonts'],
 		callback);
 });
 
@@ -114,6 +128,6 @@ gulp.task ( 'dev', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
-		['scripts', 'vendor', 'move-html', 'move-images'], 'serve', 
+		['scripts', 'vendor', 'move-html', 'move-images', 'move-fonts'], 'serve',
 		callback);
 });

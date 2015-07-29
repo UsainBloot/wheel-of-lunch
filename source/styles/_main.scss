@@ -1,31 +1,3 @@
-/* Variables */
-$wheel-width: 600px;
-$wheel-height: 600px;
-
-$button-width: 80px;
-$button-height: 40px;
-
-$settings-width: 340px;
-$settings-height: 350px;
-
-$select-localisation-width: 300px;
-$select-localisation-height: 96px;
-
-$localisation-width: 400px;
-$localisation-height: 50px;
-
-$result-width: 500px;
-$result-height: 150px;
-
-$clickme-left: 46px;
-
-$map-panel-width: 1000px;
-$map-panel-height: 600px;
-
-$map-header-height: 100px;
-
-@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
-
 #confetti-world {
 	display: none;
 	position: fixed;
@@ -107,7 +79,7 @@ button#spin {
 
 .alert.localisation p{
 	text-align: left;
-	
+
 	button {
 		position: absolute;
 		right: 10px;
@@ -151,7 +123,7 @@ div.settings {
 	border-radius: 0px 0 4px 0px;
 	left: -$settings-width;
 	z-index: 1;
-	
+
 	> div {
 		padding-top: 0px;
 	}
@@ -173,26 +145,26 @@ a.settings {
 }
 
 a.settings:hover {
-		
+
 	position: absolute;
 	left: 5px;
 	-webkit-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
     cursor: pointer;
-	
+
 	~ div.settings {
 		left: -($settings-width - 5px);
 		-webkit-transition: all 0.25s ease-out;
 	    transition: all 0.25s ease-out;
     }
-    
+
     ~ div.clickme {
     	left: $clickme-left + 5px;
     	-webkit-transition: all 0.25s ease-out;
 	    transition: all 0.25s ease-out;
 	    color: #000000;
     }
-    
+
 }
 
 a.shareLink {
@@ -226,7 +198,7 @@ div.input-group {
 		width: 114px;
 		text-align: left;
 	}
-	
+
 	input {
 		width: 174px !important;
 	}
@@ -336,7 +308,7 @@ input[type="text"]#search {
 	border: 1px solid #ddd;
 }
 
-#location-option-current { 
+#location-option-current {
 	float: left;
 }
 
