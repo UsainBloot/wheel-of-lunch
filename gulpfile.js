@@ -15,12 +15,12 @@ var reload = browserSync.reload;
 
 config = {
 	styles: {
-		src: [ 'source/styles/base.scss' ],
-		dest: 'public/styles/'
+		src: [ 'source/scss/base.scss' ],
+		dest: 'public/css/'
 	},
 	scripts: {
-		src: [ 'source/scripts/**/*.js' ],
-		dest: 'public/scripts',
+		src: [ 'source/js/**/*.js' ],
+		dest: 'public/js',
     all: 'all.js'
 	},
   vendor: {
@@ -75,9 +75,9 @@ gulp.task( 'styles', function() {
 	return gulp
 		.src( config.styles.src )
 		.pipe( compass({
-			sass: 'source/styles',
+			sass: 'source/scss',
 			image: 'source/img',
-			css: 'public/styles'
+			css: 'public/css'
 		 })).
 		pipe(autoprefixer({
 			compatibility: ['last 6 versions', 'ie 8',  'ie 9'],
@@ -88,14 +88,14 @@ gulp.task( 'styles', function() {
 });
 
 gulp.task( 'scripts', function() {
-	return browserify('./source/scripts/init.js', {debug: true}).
+	return browserify('./source/js/init.js', {debug: true}).
 		bundle().
 		pipe(source(config.scripts.all)).
 		pipe(buffer()).
 		pipe(sourcemaps.init()).
 		pipe(uglify()).
 		pipe(sourcemaps.write('../maps')).
-		pipe(gulp.dest('./public/scripts'));
+		pipe(gulp.dest('./public/js'));
 });
 
 gulp.task( 'vendor', function() {
@@ -103,7 +103,7 @@ gulp.task( 'vendor', function() {
 		.src(config.vendor.jsSrc)
 		.pipe(concat('vendor.js'))
 		.pipe(uglify())
-    .pipe(gulp.dest('public/scripts/'));
+    .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('serve', function() {
@@ -113,7 +113,7 @@ gulp.task('serve', function() {
     }
   });
 
-  gulp.watch(['public/*.html', 'public/styles/**/*.css', 'public/scripts/**/*.js'], {cwd: 'app'}, reload);
+  gulp.watch(['public/*.html', 'public/css/**/*.css', 'public/js/**/*.js'], {cwd: 'app'}, reload);
 });
 
 gulp.task( 'default', function(callback) {
