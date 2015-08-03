@@ -8,7 +8,7 @@ module.exports = (function() {
   var Geolocation = require('../modules/geolocation.js');
   var Confetti = require('../modules/confetti.js');
 
-  WOL.app.wheel = new Wheel('#wheel');
+  WOL.app.wheel = new Wheel('wheel');
   WOL.app.lightbox.localisation = new LocalisationLightbox();
 
 }());
