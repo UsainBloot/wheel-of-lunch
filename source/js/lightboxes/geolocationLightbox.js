@@ -1,8 +1,8 @@
-module.exports = (function() {
+module.exports = (function($) {
 
   'use strict';
 
-  var Geolocation = require('./geolocation.js');
+  var Geolocation = require('../modules/geolocation.js');
 
   /* Constants */
   var HTML_OUTPUT = require('../../templates/localisation-loading.html');
@@ -28,13 +28,16 @@ module.exports = (function() {
     this.getLocation();
   }
 
-  GeolocationLightbox.prototype.closeWindow = function(self) {
-    self.elems.root.remove();
+  GeolocationLightbox.prototype.closeWindow = function() {
+    this.elems.root.remove();
   }
 
   GeolocationLightbox.prototype.getLocation = function() {
-    WOL.app.geolocation = new Geolocation();
+    var self = this;
+    WOL.app.geolocation = new Geolocation(function() {
+      self.closeWindow();
+    });
   };
 
   return GeolocationLightbox;
-}());
+}(jQuery));

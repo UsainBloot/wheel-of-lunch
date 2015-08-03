@@ -25,17 +25,17 @@ module.exports = (function($) {
 
   LocalisationLightbox.prototype.init = function() {
     this.addWindow();
-  }
+  };
 
   LocalisationLightbox.prototype.addWindow = function() {
     $('body').prepend(HTML_OUTPUT);
     this.elems.root = $(ID);
     this.addEvents();
-  }
+  };
 
   LocalisationLightbox.prototype.closeWindow = function() {
     this.elems.root.remove();
-  }
+  };
 
   LocalisationLightbox.prototype.addEvents = function() {
     var self = this;
