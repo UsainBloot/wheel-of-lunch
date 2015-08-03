@@ -18,10 +18,6 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 config = {
-	templates: {
-		hogan: ['source/templates/**/*.hogan'],
-		dest: 'source/js/templates'
-	},
 	styles: {
 		src: [ 'source/scss/base.scss' ],
 		dest: 'public/css/'
