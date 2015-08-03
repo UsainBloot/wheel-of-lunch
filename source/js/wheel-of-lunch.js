@@ -1,5 +1,5 @@
 module.exports = {
-  app: {},
+  app: { lightbox: {} },
   modules: {},
   global: {},
   page: {},
