@@ -5,11 +5,25 @@ module.exports = (function($) {
   var colours = require('../data/colours.js');
   var defaultRestaurants = require('../data/restaurants.js');
 
-  function Wheel() {
-    
+  function Wheel(canvas) {
+
+    if(!canvas.length) {
+      return;
+    }
+
+    this.elems = {
+      canvas: canvas,
+      restaurants: defaultRestaurants
+    }
+
+    this.init();
   }
 
-  Wheel.prototype.example = function() {
+  Wheel.prototype.init = function() {
+    this.addEvents();
+  }
+
+  Wheel.prototype.addEvents = function() {
 
   };
 

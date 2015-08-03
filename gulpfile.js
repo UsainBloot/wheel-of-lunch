@@ -4,7 +4,10 @@ var jshint = require('gulp-jshint');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
+var replace = require('gulp-replace');
 var browserify = require('browserify');
+var html = require('html-browserify');
+var hogan = require('hoganify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
@@ -15,6 +18,10 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 config = {
+	templates: {
+		hogan: ['source/templates/**/*.hogan'],
+		dest: 'source/js/templates'
+	},
 	styles: {
 		src: [ 'source/scss/base.scss' ],
 		dest: 'public/css/'
@@ -93,8 +100,18 @@ gulp.task( 'js-hint', function() {
 		.pipe(jshint());
 });
 
+gulp.task( 'templates', function() {
+	return gulp
+		.src(config.templates.hogan)
+		.pipe(compiler('templates.js', {
+			wrapper: 'commonjs'
+		}))
+		//.pipe(replace('var Hogan = require(\'hogan\');', ''))
+		.pipe(gulp.dest(config.templates.dest));
+});
+
 gulp.task( 'scripts', function() {
-	return browserify('./source/js/init.js', {debug: true}).
+	return browserify('./source/js/init.js', {debug: true, transform: [html, hogan] }).
 		bundle().
 		pipe(source(config.scripts.all)).
 		pipe(buffer()).
