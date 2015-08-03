@@ -7,7 +7,7 @@ module.exports = (function() {
   }
 
   Result.prototype.hoganExample = function() {
-    var output = require('../../templates/result.hogan').render({
+    var output = require('../../templates/result.mustache').render({
       title: 'TEST',
       vicinity: 'VICIN',
       rating: '1',
