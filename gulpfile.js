@@ -51,7 +51,7 @@ config = {
 	}
 };
 
-gulp.task( 'clean', function () {
+gulp.task('clean', function () {
 	return gulp
 		.src( config.staticFiles.clean, { read: false, force: true } )
 		.pipe( clean() );
@@ -63,7 +63,7 @@ gulp.task('move-html', function() {
 		.pipe( gulp.dest( config.staticFiles.html.dest ) )
 });
 
-gulp.task( 'move-images', function() {
+gulp.task('move-images', function() {
 	return gulp
 		.src( config.staticFiles.images.src, { base: '' } )
 		.pipe( gulp.dest( config.staticFiles.images.dest ) )
@@ -75,7 +75,7 @@ gulp.task('move-fonts', function() {
 		.pipe( gulp.dest( config.staticFiles.fonts.dest ) )
 });
 
-gulp.task( 'styles', function() {
+gulp.task('styles', function() {
 	return gulp
 		.src( config.styles.src )
 		.pipe( compass({
@@ -91,22 +91,12 @@ gulp.task( 'styles', function() {
 		.pipe( gulp.dest( config.styles.dest ) )
 });
 
-gulp.task( 'js-hint', function() {
+gulp.task('js-hint', function() {
 	return gulp.src(config.scripts.src)
 		.pipe(jshint());
 });
 
-gulp.task( 'templates', function() {
-	return gulp
-		.src(config.templates.hogan)
-		.pipe(compiler('templates.js', {
-			wrapper: 'commonjs'
-		}))
-		//.pipe(replace('var Hogan = require(\'hogan\');', ''))
-		.pipe(gulp.dest(config.templates.dest));
-});
-
-gulp.task( 'scripts', function() {
+gulp.task('scripts', function() {
 	return browserify('./source/js/init.js', {debug: true, transform: [html, hogan] }).
 		bundle().
 		pipe(source(config.scripts.all)).
@@ -117,7 +107,7 @@ gulp.task( 'scripts', function() {
 		pipe(gulp.dest('./public/js'));
 });
 
-gulp.task( 'vendor', function() {
+gulp.task('vendor', function() {
 	return gulp
 		.src(config.vendor.jsSrc)
 		.pipe(concat('vendor.js'))
@@ -135,7 +125,7 @@ gulp.task('serve', function() {
   gulp.watch(['public/*.html', 'public/css/**/*.css', 'public/js/**/*.js'], {cwd: 'app'}, reload);
 });
 
-gulp.task( 'default', function(callback) {
+gulp.task('default', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
@@ -144,7 +134,7 @@ gulp.task( 'default', function(callback) {
 		callback);
 });
 
-gulp.task ( 'dev', function(callback) {
+gulp.task('dev', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
