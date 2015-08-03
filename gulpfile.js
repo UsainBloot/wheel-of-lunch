@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
+var jshint = require('gulp-jshint');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
@@ -87,6 +88,11 @@ gulp.task( 'styles', function() {
 		.pipe( gulp.dest( config.styles.dest ) )
 });
 
+gulp.task( 'js-hint', function() {
+	return gulp.src(config.scripts.src)
+		.pipe(jshint());
+});
+
 gulp.task( 'scripts', function() {
 	return browserify('./source/js/init.js', {debug: true}).
 		bundle().
@@ -120,6 +126,7 @@ gulp.task( 'default', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
+		['js-hint'],
 		['scripts', 'vendor', 'move-html', 'move-images', 'move-fonts'],
 		callback);
 });
@@ -128,6 +135,7 @@ gulp.task ( 'dev', function(callback) {
   runSequence(
 		'clean',
 		['styles'],
+		['js-hint'],
 		['scripts', 'vendor', 'move-html', 'move-images', 'move-fonts'], 'serve',
 		callback);
 });
