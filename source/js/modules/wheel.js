@@ -13,6 +13,13 @@ module.exports = (function() {
   function Wheel(selector) {
 
     var canvas = document.getElementById(selector);
+    var $canvas = $('#' + selector);
+
+    this.elems = {
+      selector: '#' + selector,
+      canvas: canvas,
+      $canvas: $canvas
+    }
 
     if(!canvas.getContext) {
       return;
@@ -36,7 +43,18 @@ module.exports = (function() {
       textRadius: 194,
       insideRadius: 150,
       angle: null,
-      text: null
+      text: null,
+      drag: {
+        clickedX: null,
+        clickedY: null,
+        currentDragX: null,
+        currentDragY: null,
+        previousDragX: null,
+        previousDragY: null,
+        isDragging: null,
+        changedAngle: null,
+        arcAngle: null
+      }
     }
 
     this.init();
@@ -61,6 +79,57 @@ module.exports = (function() {
   			self.spin(true);
   		}
     });
+
+    $(this.elems.selector).mousedown(function(e) {
+  		self.data.drag.clickedX = e.pageX;
+  		self.data.drag.clickedY = e.pageY;
+  		//set up the first instance of previous drag
+  		self.data.drag.previousDragX = e.pageX;
+  		self.data.drag.previousDragY = e.pageY;
+  		self.data.drag.isDragging = true;
+  	});
+
+    $(this.elems.selector).mousemove(function(e) {
+  		if(self.data.drag.isDragging && !self.retIsSpinning()) {
+  			self.data.drag.currentDragX = e.pageX;
+  			self.data.drag.currentDragY = e.pageY;
+
+  			//finding the movement from the last drag
+  			self.data.drag.changedAngle = Math.atan2(self.data.drag.currentDragY - $(SPIN_BUTTON).position().top, self.data.drag.currentDragX - $(SPIN_BUTTON).position().left);
+  			self.data.drag.changedAngle -= Math.atan2(self.data.drag.previousDragY - $(SPIN_BUTTON).position().top, self.data.drag.previousDragX - $(SPIN_BUTTON).position().left);
+
+  			//recalculating the arc from when the mouse was firsted click -- used to indicate a 'spin'
+  			self.data.drag.arcAngle = Math.atan2(self.data.drag.currentDragY - $(SPIN_BUTTON).position().top, self.data.drag.currentDragX - $(SPIN_BUTTON).position().left);
+  			self.data.drag.arcAngle -= Math.atan2(self.data.drag.clickedY - $(SPIN_BUTTON).position().top, self.data.drag.clickedX - $(SPIN_BUTTON).position().left);
+
+
+  			//add whatever the angle has changed by from the last movement of the mouse
+  			self.addToStartAngle(self.data.drag.changedAngle);
+  			self.draw(true);
+
+  			//update the previous with the current coordinate of the mouse
+  			self.data.drag.previousDragY = self.data.drag.currentDragY;
+  			self.data.drag.previousDragX = self.data.drag.currentDragX;
+  		}
+  	});
+
+  	$(this.elems.selector).mouseup(function(e) {
+  		if((self.data.drag.arcAngle >= 0.5) && !self.retIsSpinning() && self.data.drag.changedAngle > 0) { // a minimum delta of rad = 0.5 required to drag around the wheel to count as a 'spin'
+  			self.spin(true);
+  		} else if((self.data.drag.arcAngle < -4) && !self.retIsSpinning() && self.data.drag.changedAngle > 0) {
+  			self.spin(true);
+  		} else if((self.data.drag.arcAngle <= -0.5) && !self.retIsSpinning() && self.data.drag.changedAngle < 0) {
+  			self.spin(false);
+  		} else if((self.data.drag.arcAngle > 4) && !self.retIsSpinning() && self.data.drag.changedAngle < 0) {
+  			self.spin(false);
+  		}
+  		self.data.drag.isDragging = false;
+  	});
+    
+  	$(this.elems.selector).mouseout(function(e) {
+  		self.data.drag.isDragging = false;
+  	});
+
   };
 
   Wheel.prototype.draw = function() {
