@@ -2,6 +2,7 @@ module.exports = (function() {
 
   'use strict';
 
+  var Places = require('./places.js');
   var ErrorLocationLightbox = require('../lightboxes/errorLocationLightbox.js');
 
   function Geolocation(callback) {
@@ -23,6 +24,12 @@ module.exports = (function() {
 
   Geolocation.prototype.success = function(pos) {
     WOL.app.geolocation.position = pos.coords;
+    WOL.app.places = new Places(
+      {
+        latitude: WOL.app.geolocation.position.latitude,
+        longitude: WOL.app.geolocation.position.longitude
+      }
+    );
     WOL.app.geolocation.callback();
   };
 
