@@ -226,12 +226,8 @@ module.exports = (function() {
       index = Math.floor((degrees % 360) / arcd);
     }
 
-    var resultName = this.data.restaurants[index].name.split(' ').join('+'),
-      mapURL = "http://maps.google.com/maps/dir/",
-			originCoords = WOL.app.geolocation.position.latitude + "," + WOL.app.geolocation.position.longitude;
-
     /* Display Result */
-    //WOL.app.lightboxes.result = new ResultLightbox();
+    WOL.app.lightbox.result = new ResultLightbox(this.data.restaurants[index]);
 
     this.data.ctx.restore();
 

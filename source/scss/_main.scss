@@ -96,6 +96,12 @@ button#spin {
 	margin: (-$result-height / 2) 0 0 (-$result-width / 2);
 	text-align: center;
 	z-index: 3;
+
+	button.close {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+	}
 }
 
 /*
