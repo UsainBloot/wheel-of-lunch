@@ -1,6 +1,5 @@
-'use strict';
-
 module.exports = (function() {
+  'use strict';
   return {
       bgColour: [
     	"#B8D430",

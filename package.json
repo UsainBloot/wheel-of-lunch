@@ -23,6 +23,7 @@
     "hogan.js": "^3.0.2",
     "hoganify": "^0.2.0",
     "html-browserify": "0.0.6",
+    "jshint-stylish": "^2.0.1",
     "run-sequence": "^1.1.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"

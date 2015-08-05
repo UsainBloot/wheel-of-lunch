@@ -93,7 +93,8 @@ gulp.task('styles', function() {
 
 gulp.task('js-hint', function() {
 	return gulp.src(config.scripts.src)
-		.pipe(jshint());
+		.pipe(jshint('.jshintrc'))
+		.pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('scripts', function() {

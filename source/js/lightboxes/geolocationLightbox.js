@@ -13,24 +13,24 @@ module.exports = (function($) {
     this.elems = {
       id: ID,
       root: null
-    }
+    };
 
     this.init();
   }
 
   GeolocationLightbox.prototype.init = function() {
     this.addWindow();
-  }
+  };
 
   GeolocationLightbox.prototype.addWindow = function() {
     $('body').prepend(HTML_OUTPUT);
     this.elems.root = $(ID);
     this.getLocation();
-  }
+  };
 
   GeolocationLightbox.prototype.closeWindow = function() {
     this.elems.root.remove();
-  }
+  };
 
   GeolocationLightbox.prototype.getLocation = function() {
     var self = this;

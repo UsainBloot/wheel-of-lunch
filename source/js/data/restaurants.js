@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = (function() {
-
+  'use strict';
   return [
       {name:"Wendy's", lat:"", lng:"", vicinity:""}, {name:"McDonalds", lat:"", lng:"", vicinity:""},
       {name:"Chick-fil-a", lat:"", lng:"", vicinity:""}, {name:"Five Guys", lat:"", lng:"", vicinity:""},

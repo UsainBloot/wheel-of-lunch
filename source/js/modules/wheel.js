@@ -19,7 +19,7 @@ module.exports = (function() {
       selector: '#' + selector,
       canvas: canvas,
       $canvas: $canvas
-    }
+    };
 
     if(!canvas.getContext) {
       return;
@@ -55,7 +55,7 @@ module.exports = (function() {
         changedAngle: null,
         arcAngle: null
       }
-    }
+    };
 
     this.init();
   }
@@ -69,7 +69,7 @@ module.exports = (function() {
 
     this.draw();
     this.addEvents();
-  }
+  };
 
   Wheel.prototype.addEvents = function() {
     var self = this;
@@ -125,7 +125,7 @@ module.exports = (function() {
   		}
   		self.data.drag.isDragging = false;
   	});
-    
+
   	$(this.elems.selector).mouseout(function(e) {
   		self.data.drag.isDragging = false;
   	});

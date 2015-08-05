@@ -18,7 +18,7 @@ module.exports = (function($) {
     this.elems = {
       id: ID,
       root: null
-    }
+    };
 
     this.init();
   }
