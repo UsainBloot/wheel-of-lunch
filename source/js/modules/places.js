@@ -23,11 +23,11 @@ module.exports = (function() {
   }
 
   Places.prototype.init = function() {
-    if(typeof this.userOptions.latitude !== 'undefined') { this.options.latitude = this.userOptions.latitude };
-    if(typeof this.userOptions.longitude !== 'undefined') { this.options.longitude = this.userOptions.longitude };
-    if(typeof this.userOptions.radius !== 'undefined') { this.options.radius = this.userOptions.radius };
-    if(typeof this.userOptions.placeType !== 'undefined') { this.options.placeType = this.userOptions.placeType };
-    if(typeof this.userOptions.maxPlaces !== 'undefined') { this.options.maxPlaces = this.userOptions.maxPlaces };
+    if(typeof this.userOptions.latitude !== 'undefined') { this.options.latitude = this.userOptions.latitude; }
+    if(typeof this.userOptions.longitude !== 'undefined') { this.options.longitude = this.userOptions.longitude; }
+    if(typeof this.userOptions.radius !== 'undefined') { this.options.radius = this.userOptions.radius; }
+    if(typeof this.userOptions.placeType !== 'undefined') { this.options.placeType = this.userOptions.placeType; }
+    if(typeof this.userOptions.maxPlaces !== 'undefined') { this.options.maxPlaces = this.userOptions.maxPlaces; }
   };
 
   Places.prototype.getPlaces = function(options) {
@@ -85,7 +85,7 @@ module.exports = (function() {
     this.options.initialPlaces = 0;
     WOL.app.wheel.setRestaurants(data);
     WOL.app.wheel.draw();
-  }
+  };
 
   Places.prototype.error = function(data) {
     WOL.app.lightbox.NoLocationLightbox = new ErrorLocationLightbox();
