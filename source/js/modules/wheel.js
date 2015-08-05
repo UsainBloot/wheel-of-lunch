@@ -152,7 +152,7 @@ module.exports = (function() {
       self.data.ctx.translate(self.data.width / 2 + Math.cos(self.data.angle + self.data.arc /2) * self.data.textRadius,
           self.data.height / 2 + Math.sin(self.data.angle + self.data.arc / 2) * self.data.textRadius);
       self.data.ctx.rotate(self.data.angle + self.data.arc / 2 + Math.PI / 2);
-      self.printName(restaurant.name, -self.data.ctx.measureText(restaurant.name).width / 2, 0, 14, ((2 * Math.Pi * self.data.textRadius) / self.data.restaurants.length) - 10);
+      self.printName(restaurant.name, -self.data.ctx.measureText(restaurant.name).width / 2, 0, 14, ((2 * Math.PI * self.data.textRadius) / self.data.restaurants.length) - 10);
       self.data.ctx.restore();
     });
     this.drawArrow();
