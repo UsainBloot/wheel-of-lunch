@@ -102,6 +102,27 @@ button#spin {
 		top: 5px;
 		right: 10px;
 	}
+
+	.rating {
+		display: inline-block;
+		position: relative;
+		margin: 0 0 10px;
+		font-size: 18px;
+
+		.rating-foreground {
+			display: inline-block;
+			position: absolute;
+			overflow: hidden;
+			color: #FFCC00;
+			white-space: nowrap;
+		}
+
+		.rating-background {
+			display: inline-block;
+			color: #D0D0D0;
+		}
+
+	}
 }
 
 /*
