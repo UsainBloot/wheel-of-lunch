@@ -13,13 +13,6 @@
 </head>
 <body>
 
-
-	<div class="panel panel-default localisation search-localisation" style="display:none;">
-		<div class="panel-body">
-			<p>Hang on a moment, we are just getting your location<span class="one">.</span><span class="two">.</span><span class="three">.</span></p>
-		</div>
-	</div>
-
 	<div class="panel panel-default panel-map" style="display:none;">
 		<div class="panel-body">
 			<div id="map-header">
@@ -29,75 +22,6 @@
 				<input type="hidden" name="lng" id="lngBox" disabled/>
 			</div>
 			<div id="map-canvas"></div>
-		</div>
-	</div>
-
-	<div class="alert alert-danger localisation" role="alert" style="display:none;">
-		<p>Oops! We can't find your location.
-			<button id="localistion-failure" type="button" class="btn btn-danger btn-sm">
-				Continue anyway
-			</button>
-		</p>
-	</div>
-
-	<div class="panel panel-default result" style="display:none;">
-		<div class="panel-body">
-			<h2></h2>
-			<p class="vicinity"></p>
-			<p class="rating"></p>
-			<p>
-				<a class="map" target="_blank" href="">View on map</a>
-			</p>
-		</div>
-	</div>
-
-	<a class="btn btn-primary btn-lg blur settings" role="button">
-		<span class="glyphicon glyphicon-cog"></span>
-	</a>
-	<div class="clickme blur">
-		<p>Click me!</p>
-	</div>
-	<div class="panel panel-default settings blur">
-		<div class="panel-body">
-			<div class="radio">
-			  	<label>
-			    	<input type="radio" name="optionsRadios" id="type-restaurant" value="restaurant">
-			    	Restaurant
-				</label>
-			</div>
-			<div class="radio">
-			  	<label>
-			    	<input type="radio" name="optionsRadios" id="type-food" value="food">
-			    	Food
-				</label>
-			</div>
-			<div class="radio">
-			  	<label>
-			    	<input type="radio" name="optionsRadios" id="type-bar" value="bar">
-			    	Bar
-				</label>
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Latitude</span>
-				<input type="number" id="latitude" class="form-control" placeholder="Latitude">
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Longitude</span>
-				<input type="number" id="longitude" class="form-control" placeholder="Longitude">
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-record"></span> Radius (m)</span>
-				<input type="number" min="1" id="radius" class="form-control" placeholder="Radius">
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span> # of Places</span>
-				<input type="number" min="1" max="12" id="maxPlaces" class="form-control" placeholder="# of Places">
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-share"></span> Share link</span>
-				<input type="text" id="shareLink" class="form-control" value="">
-			</div>
-			<button type="submit" id="settings-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
 		</div>
 	</div>
 
