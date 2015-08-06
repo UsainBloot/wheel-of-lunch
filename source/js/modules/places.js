@@ -88,6 +88,7 @@ module.exports = (function() {
   };
 
   Places.prototype.error = function(data) {
+    //TODO FIX ERROR HANDLING OF PLACES API
     WOL.app.lightbox.NoLocationLightbox = new ErrorLocationLightbox();
   };
 

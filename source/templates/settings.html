@@ -1,0 +1,54 @@
+<div id="settings">
+  <a class="btn btn-primary btn-lg blur settings" role="button">
+    <span class="glyphicon glyphicon-cog"></span>
+  </a>
+
+  <div class="clickme blur">
+    <p>Click me!</p>
+  </div>
+
+  <div class="panel panel-default settings blur">
+    <div class="panel-body">
+      <div class="radio">
+          <label>
+            <input type="radio" name="placeType" class="placetype restaurant" value="restaurant">
+            Restaurant
+        </label>
+      </div>
+      <div class="radio">
+          <label>
+            <input type="radio" name="placeType" class="placetype food" value="food">
+            Food
+        </label>
+      </div>
+      <div class="radio">
+          <label>
+            <input type="radio" name="placeType" class="placetype bar" value="bar">
+            Bar
+        </label>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Latitude</span>
+        <input type="number" class="latitude form-control" placeholder="Latitude">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> Longitude</span>
+        <input type="number" class="longitude form-control" placeholder="Longitude">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-record"></span> Radius (m)</span>
+        <input type="number" min="1" class="radius form-control" placeholder="Radius">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-stats"></span> # of Places</span>
+        <input type="number" min="1" max="12" class="maxplaces form-control" placeholder="# of Places">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-share"></span> Share link</span>
+        <input type="text" class="sharelink form-control" value="">
+      </div>
+      <button type="submit" id="settings-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
+    </div>
+  </div>
+
+</div>
