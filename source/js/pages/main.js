@@ -20,4 +20,8 @@ module.exports = (function() {
     WOL.app.places = new Places();
   }
 
+  $('#new-location').on('click', function(){
+    WOL.app.lightbox.localisation = new LocalisationLightbox();
+  });
+
 }());
