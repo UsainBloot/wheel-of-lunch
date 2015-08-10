@@ -24,7 +24,7 @@ module.exports = (function() {
 
   Geolocation.prototype.success = function(pos) {
     WOL.app.geolocation.position = pos.coords;
-    WOL.app.settings.setLatLong(WOL.app.geolocation.position.latitude);
+    WOL.app.settings.setLatLong(WOL.app.geolocation.position);
     WOL.app.places = new Places(
       {
         latitude: WOL.app.geolocation.position.latitude,

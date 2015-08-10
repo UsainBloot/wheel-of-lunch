@@ -2,6 +2,8 @@ module.exports = (function() {
 
   'use strict';
 
+  var ErrorLocationLightbox = require('../lightboxes/ErrorLocationLightbox.js');
+
   var API_URL = 'http://www.jack-palmer.co.uk/wheel/api/getPlaces/';
 
   function Places(userOptions) {
@@ -14,7 +16,13 @@ module.exports = (function() {
         initialPlaces: 12
     };
 
-    this.userOptions = userOptions;
+    this.URLparams = WOL.app.utilities.getURLParams();
+
+    if(typeof userOptions === 'undefined') {
+      this.userOptions = { };
+    } else {
+      this.userOptions = userOptions;
+    }
 
     this.restaurants = {};
 
@@ -23,6 +31,12 @@ module.exports = (function() {
   }
 
   Places.prototype.init = function() {
+    if(typeof this.URLparams.lat !== 'undefined') { this.options.latitude = this.URLparams.lat; }
+    if(typeof this.URLparams.long !== 'undefined') { this.options.longitude = this.URLparams.long; }
+    if(typeof this.URLparams.radius !== 'undefined') { this.options.radius = this.URLparams.radius; }
+    if(typeof this.URLparams.type !== 'undefined') { this.options.placeType = this.URLparams.type; }
+    if(typeof this.URLparams.maxplaces !== 'undefined') { this.options.maxPlaces = this.URLparams.maxplaces; }
+
     if(typeof this.userOptions.latitude !== 'undefined') { this.options.latitude = this.userOptions.latitude; }
     if(typeof this.userOptions.longitude !== 'undefined') { this.options.longitude = this.userOptions.longitude; }
     if(typeof this.userOptions.radius !== 'undefined') { this.options.radius = this.userOptions.radius; }
@@ -69,7 +83,7 @@ module.exports = (function() {
       options.radiusIncrement = 500;
     }
 
-    self.getPlaces(
+    this.getPlaces(
       {
         latitude: options.latitude,
         longitude: options.longitude,

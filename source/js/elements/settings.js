@@ -21,8 +21,6 @@ module.exports = (function($) {
 
   function Settings() {
 
-    //TODO URL PARAMS TO POPULATE SETTINGS
-
     this.elems = {
       id: ID,
       root: null
@@ -37,10 +35,18 @@ module.exports = (function($) {
       shareLink: ''
     };
 
+    this.URLparams = WOL.app.utilities.getURLParams();
+
     this.init();
   }
 
   Settings.prototype.init = function() {
+    if(typeof this.URLparams.lat !== 'undefined') { this.settings.latitude = this.URLparams.lat; }
+    if(typeof this.URLparams.long !== 'undefined') { this.settings.longitude = this.URLparams.long; }
+    if(typeof this.URLparams.radius !== 'undefined') { this.settings.radius = this.URLparams.radius; }
+    if(typeof this.URLparams.type !== 'undefined') { this.settings.placeType = this.URLparams.type; }
+    if(typeof this.URLparams.maxplaces !== 'undefined') { this.settings.maxPlaces = this.URLparams.maxplaces; }
+
     this.elems.root = $(ID);
     this.addWindow();
     this.populate();
