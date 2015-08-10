@@ -44,7 +44,7 @@ module.exports = (function() {
     if(typeof this.userOptions.placeType !== 'undefined') { this.options.placeType = this.userOptions.placeType; }
     if(typeof this.userOptions.maxPlaces !== 'undefined') { this.options.maxPlaces = this.userOptions.maxPlaces; }
 
-    if(typeof this.userOptions.progressiveSearch !== 'undefined') { this.options.progressiveSearch = this.userOptions.progressiveSearch; }
+    if(typeof this.userOptions.dynamicSearch !== 'undefined') { this.options.dynamicSearch = this.userOptions.dynamicSearch; }
   };
 
   Places.prototype.getPlaces = function(options) {
