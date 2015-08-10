@@ -216,8 +216,13 @@ a.settings-open {
     transition: all 0.25s ease-out;
 }
 
+.settings .checkbox {
+	display: inline-block;
+}
+
 .settings button {
 	float: right;
+	display: inline-block;
 	margin-top: 5px;
 	cursor: pointer;
 }

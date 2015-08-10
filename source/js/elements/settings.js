@@ -18,6 +18,7 @@ module.exports = (function($) {
   var MAX_PLACES_INPUT = '#settings input.maxplaces';
   var SHARE_LINK_INPUT = '#settings input.sharelink';
   var SEARCH_BUTTON = '#settings-search';
+  var DYNAMIC_SEARCH_INPUT = '#settings input.dynamic-search';
 
   function Settings() {
 
@@ -32,7 +33,8 @@ module.exports = (function($) {
       longitude: '',
       radius: 300,
       maxPlaces: 12,
-      shareLink: ''
+      shareLink: '',
+      dynamicSearch: false
     };
 
     this.URLparams = WOL.app.utilities.getURLParams();
@@ -88,6 +90,7 @@ module.exports = (function($) {
     this.settings.radius = $(RAD_INPUT).val();
     this.settings.maxPlaces = $(MAX_PLACES_INPUT).val();
     this.settings.shareLink = this.getShareLink();
+    this.settings.dynamicSearch = $(DYNAMIC_SEARCH_INPUT).is(':checked');
     this.populate();
   };
 

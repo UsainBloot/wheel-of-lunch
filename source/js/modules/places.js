@@ -13,7 +13,6 @@ module.exports = (function() {
         radiusIncrement: 50,
         placeType: 'restaurant',
         maxPlaces: 12,
-        initialPlaces: 12,
         dynamicSearch: false
     };
 
@@ -50,10 +49,10 @@ module.exports = (function() {
   Places.prototype.getPlaces = function(options) {
     var self = this;
 
-    $.getJSON( API_URL + this.buildQueryParams(),
+    $.getJSON( API_URL + this.buildQueryParams(options),
     function( data ) {
 
-      if(data.length < options.initialPlaces && options.radius < 3000 && options.progressiveSearch) {
+      if(data.length < options.maxPlaces && options.radius < 3000 && options.dynamicSearch) {
         self.expandSearchRadius(data, options);
       } else {
 
@@ -68,13 +67,13 @@ module.exports = (function() {
     });
   };
 
-  Places.prototype.buildQueryParams = function() {
+  Places.prototype.buildQueryParams = function(options) {
     return '?' +
-           'latitude=' + this.options.latitude + '&' +
-           'longitude=' + this.options.longitude + '&' +
-           'radius=' + this.options.radius + '&' +
-           'type=' + this.options.placeType + '&' +
-           'maxplaces=' + this.options.maxPlaces + '&' +
+           'latitude=' + options.latitude + '&' +
+           'longitude=' + options.longitude + '&' +
+           'radius=' + options.radius + '&' +
+           'type=' + options.placeType + '&' +
+           'maxplaces=' + options.maxPlaces + '&' +
            'minPrice=' + '0' + '&' +
            'maxPrice=' + '4';
   };
@@ -92,9 +91,9 @@ module.exports = (function() {
         latitude: options.latitude,
         longitude: options.longitude,
         radius: parseInt(options.radius) + options.radiusIncrement,
+        radiusIncrement: parseInt(options.radiusIncrement),
         placeType: options.placeType,
         maxPlaces: parseInt(options.maxPlaces),
-        initialPlaces: parseInt(options.initialPlaces),
         dynamicSearch: options.dynamicSearch
       }
     );
@@ -102,7 +101,6 @@ module.exports = (function() {
 
   Places.prototype.success = function(data, options) {
     this.restaurants = data;
-    this.options.initialPlaces = 0;
     this.options.dynamicSearch = false;
 
     if(options.dynamicSearch) {
