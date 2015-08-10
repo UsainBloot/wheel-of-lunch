@@ -28,7 +28,8 @@ module.exports = (function() {
     WOL.app.places = new Places(
       {
         latitude: WOL.app.geolocation.position.latitude,
-        longitude: WOL.app.geolocation.position.longitude
+        longitude: WOL.app.geolocation.position.longitude,
+        dynamicSearch: true
       }
     );
     WOL.app.geolocation.callback();

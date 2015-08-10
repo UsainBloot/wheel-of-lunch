@@ -97,6 +97,11 @@ module.exports = (function($) {
     this.populate();
   };
 
+  Settings.prototype.setRadius = function(radius) {
+    this.settings.radius = radius;
+    this.populate();
+  };
+
   Settings.prototype.getShareLink = function() {
     var url = window.location.origin + window.location.pathname;
   	var params = {

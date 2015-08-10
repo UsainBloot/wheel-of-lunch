@@ -13,7 +13,8 @@ module.exports = (function() {
         radiusIncrement: 50,
         placeType: 'restaurant',
         maxPlaces: 12,
-        initialPlaces: 12
+        initialPlaces: 12,
+        dynamicSearch: false
     };
 
     this.URLparams = WOL.app.utilities.getURLParams();
@@ -42,6 +43,8 @@ module.exports = (function() {
     if(typeof this.userOptions.radius !== 'undefined') { this.options.radius = this.userOptions.radius; }
     if(typeof this.userOptions.placeType !== 'undefined') { this.options.placeType = this.userOptions.placeType; }
     if(typeof this.userOptions.maxPlaces !== 'undefined') { this.options.maxPlaces = this.userOptions.maxPlaces; }
+
+    if(typeof this.userOptions.progressiveSearch !== 'undefined') { this.options.progressiveSearch = this.userOptions.progressiveSearch; }
   };
 
   Places.prototype.getPlaces = function(options) {
@@ -50,15 +53,16 @@ module.exports = (function() {
     $.getJSON( API_URL + this.buildQueryParams(),
     function( data ) {
 
-      if(data.length === 0) {
-        self.error();
-        return;
-      }
-
-      if(data.length < options.initialPlaces && options.radius < 3000) {
+      if(data.length < options.initialPlaces && options.radius < 3000 && options.progressiveSearch) {
         self.expandSearchRadius(data, options);
       } else {
-        self.success(data);
+
+        if(data.length === 0) {
+          self.error();
+        } else {
+          self.success(data, options);
+        }
+
       }
 
     });
@@ -76,10 +80,10 @@ module.exports = (function() {
   };
 
   Places.prototype.expandSearchRadius = function(data, options) {
-    if(options.radius > 300) {
+    if(options.radius >= 300) {
       options.radiusIncrement = 100;
     }
-    if(options.radius > 1000) {
+    if(options.radius >= 1000) {
       options.radiusIncrement = 500;
     }
 
@@ -89,20 +93,27 @@ module.exports = (function() {
         longitude: options.longitude,
         radius: parseInt(options.radius) + options.radiusIncrement,
         placeType: options.placeType,
-        maxPlaces: options.maxPlaces
+        maxPlaces: parseInt(options.maxPlaces),
+        initialPlaces: parseInt(options.initialPlaces),
+        dynamicSearch: options.dynamicSearch
       }
     );
   };
 
-  Places.prototype.success = function(data) {
+  Places.prototype.success = function(data, options) {
     this.restaurants = data;
     this.options.initialPlaces = 0;
+    this.options.dynamicSearch = false;
+
+    if(options.dynamicSearch) {
+      WOL.app.settings.setRadius(options.radius);
+    }
+
     WOL.app.wheel.setRestaurants(data);
     WOL.app.wheel.draw();
   };
 
   Places.prototype.error = function(data) {
-    //TODO FIX ERROR HANDLING OF PLACES API
     WOL.app.lightbox.NoLocationLightbox = new ErrorLocationLightbox();
   };
 
