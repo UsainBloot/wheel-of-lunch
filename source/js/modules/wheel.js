@@ -5,7 +5,6 @@ module.exports = (function() {
   var colours = require('../data/colours.js');
   var defaultRestaurants = require('../data/restaurants.js');
   var ResultLightbox = require('../lightboxes/resultLightbox.js');
-  var Confetti = require('./confetti.js');
 
   /* Buttons */
   var SPIN_BUTTON = '#spin';
