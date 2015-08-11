@@ -1,4 +1,5 @@
 node_modules/
+bower_components
 *.scssc
-photoshop
 config.codekit
+.sass-cache

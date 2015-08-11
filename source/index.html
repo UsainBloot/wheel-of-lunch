@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Wheel of Lunch</title>
+	<link rel="shortcut icon" href="img/favicon.ico"/>
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<!-- Scripts -->
+	<script src="js/vendor.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnM4OGSqM7nNwL5YXIjJikowkI9fEwXp8&libraries=places"></script>
+	<!-- Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=1">
+</head>
+<body>
+
+	<div class="panel panel-default panel-map" style="display:none;">
+		<div class="panel-body">
+			<div id="map-header">
+				<input type="text" id="search" class="controls" name="search" placeholder="Enter postcode or place name"/>
+				<button type="button" id="select-location" class="btn btn-primary btn-lg">Select Location</button>
+				<input type="hidden" name="lat" id="latBox" disabled/>
+				<input type="hidden" name="lng" id="lngBox" disabled/>
+			</div>
+			<div id="map-canvas"></div>
+		</div>
+	</div>
+
+	<button type="button" id="new-location" class="btn btn-primary blur"><span class="glyphicon glyphicon-globe"></span> New Location</button>
+
+	<canvas id="confetti-world"></canvas>
+	<button type="button" id="spin" class="btn btn-success blur"><span class="glyphicon glyphicon-repeat"></span> Spin</button>
+	<canvas id="wheel" class="blur" width="600" height="600"></canvas>
+
+	<a href="https://github.com/UsainBloot/Wheel-Of-Lunch"><img class="blur" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+	<script type="text/javascript" src="js/all.js"></script>
+</body>
+</html>
