@@ -230,8 +230,6 @@ module.exports = (function() {
     WOL.app.lightbox.Result = new ResultLightbox(this.data.restaurants[index]);
 
     this.data.ctx.restore();
-
-    //WOL.app.confetti = new Confetti();
   };
 
   Wheel.prototype.printName = function(text, x, y, lineHeight, fitWidth) {
