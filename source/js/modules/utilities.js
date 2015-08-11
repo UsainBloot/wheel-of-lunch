@@ -19,5 +19,12 @@ module.exports = (function($) {
       return vars;
   };
 
+  Utilities.prototype.blurBackground = function() {
+    $('.unblur').removeClass('unblur').addClass('blur');
+  };
+  Utilities.prototype.unblurBackground = function() {
+    $('.blur').removeClass('blur').addClass('unblur');
+  };
+
   return Utilities;
 }(jQuery));

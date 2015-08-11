@@ -30,6 +30,7 @@ module.exports = (function($) {
   };
 
   LocalisationLightbox.prototype.addWindow = function() {
+    WOL.app.utilities.blurBackground();
     $('body').prepend(HTML_OUTPUT);
     this.elems.root = $(ID);
     this.isCurrentlyOpen = true;

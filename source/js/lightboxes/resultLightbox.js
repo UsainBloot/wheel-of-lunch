@@ -27,6 +27,7 @@ module.exports = (function($) {
   };
 
   ResultLightbox.prototype.addWindow = function() {
+    WOL.app.utilities.blurBackground();
     $('body').prepend(HTML_OUTPUT.render( {
       title: this.restaurant.name,
       vicinity: this.restaurant.vicinity,
@@ -40,6 +41,7 @@ module.exports = (function($) {
 
   ResultLightbox.prototype.closeWindow = function() {
     this.elems.root.remove();
+    WOL.app.utilities.unblurBackground();
   };
 
   ResultLightbox.prototype.displayRatings = function() {

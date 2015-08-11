@@ -37,6 +37,7 @@ module.exports = (function($) {
 
   MapLightbox.prototype.closeWindow = function() {
     this.elems.root.remove();
+    WOL.app.utilities.unblurBackground();
   };
 
   MapLightbox.prototype.addEvents = function() {

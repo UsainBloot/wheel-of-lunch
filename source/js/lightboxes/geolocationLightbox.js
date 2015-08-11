@@ -30,6 +30,7 @@ module.exports = (function($) {
 
   GeolocationLightbox.prototype.closeWindow = function() {
     this.elems.root.remove();
+    WOL.app.utilities.unblurBackground();
   };
 
   GeolocationLightbox.prototype.getLocation = function() {
