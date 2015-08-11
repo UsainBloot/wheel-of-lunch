@@ -304,7 +304,7 @@ div.input-group {
 	}
 }
 
-input[type="text"]#search {
+input[type="text"]#map-search {
 	border: 0;
 	font-size: 36px;
 	height: 70px;
@@ -340,6 +340,20 @@ input[type="text"]#search {
 	margin: 0;
 	padding: 0;
 	border: 1px solid #ddd;
+
+}
+
+.center-marker {
+  position:absolute;
+  background:url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
+  top:50%;left:50%;
+
+  z-index:1;
+  margin-left:-10px;
+  height:34px;
+  width:20px;
+
+  cursor:pointer;
 }
 
 #location-option-current {

@@ -20,6 +20,8 @@ module.exports = (function($) {
       root: null
     };
 
+    this.isCurrentlyOpen = false;
+
     this.init();
   }
 
@@ -30,10 +32,12 @@ module.exports = (function($) {
   LocalisationLightbox.prototype.addWindow = function() {
     $('body').prepend(HTML_OUTPUT);
     this.elems.root = $(ID);
+    this.isCurrentlyOpen = true;
     this.addEvents();
   };
 
   LocalisationLightbox.prototype.closeWindow = function() {
+    this.isCurrentlyOpen = false;
     this.elems.root.remove();
   };
 

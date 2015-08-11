@@ -37,7 +37,7 @@ module.exports = (function() {
 
   Geolocation.prototype.error = function(err) {
     WOL.app.geolocation.callback();
-    WOL.app.lightbox.NoLocationLightbox = new ErrorLocationLightbox();
+    WOL.app.lightbox.ErrorLocationLightbox = new ErrorLocationLightbox();
   };
 
   Geolocation.prototype.closeParentWindow = function() {

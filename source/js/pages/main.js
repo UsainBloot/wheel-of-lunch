@@ -15,13 +15,18 @@ module.exports = (function() {
   var showLocalisationOptions = typeof WOL.app.settings.URLparams.lat === 'undefined' || typeof WOL.app.settings.URLparams.long === 'undefined';
 
   if(showLocalisationOptions) {
-    WOL.app.lightbox.localisation = new LocalisationLightbox();
+    WOL.app.lightbox.Localisation = new LocalisationLightbox();
   } else {
     WOL.app.places = new Places();
   }
 
   $('#new-location').on('click', function(){
-    WOL.app.lightbox.localisation = new LocalisationLightbox();
+    if(typeof WOL.app.lightbox.Localisation !== 'undefined' && !WOL.app.lightbox.Localisation.isCurrentlyOpen) {
+      for(var key in WOL.app.lightbox) {
+        WOL.app.lightbox[key].closeWindow();
+      }
+      WOL.app.lightbox.Localisation = new LocalisationLightbox();
+    }
   });
 
 }());

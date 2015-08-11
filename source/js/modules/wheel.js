@@ -227,7 +227,7 @@ module.exports = (function() {
     }
 
     /* Display Result */
-    WOL.app.lightbox.result = new ResultLightbox(this.data.restaurants[index]);
+    WOL.app.lightbox.Result = new ResultLightbox(this.data.restaurants[index]);
 
     this.data.ctx.restore();
 

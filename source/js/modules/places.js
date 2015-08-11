@@ -112,7 +112,7 @@ module.exports = (function() {
   };
 
   Places.prototype.error = function(data) {
-    WOL.app.lightbox.NoLocationLightbox = new ErrorLocationLightbox();
+    WOL.app.lightbox.ErrorLocationLightbox = new ErrorLocationLightbox();
   };
 
   return Places;
