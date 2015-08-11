@@ -61,12 +61,13 @@ class PlacesAPI {
 	}
 
 }
+if(isset($_SERVER['HTTP_ORIGIN'])){
+	$http_origin = $_SERVER['HTTP_ORIGIN'];
 
-$http_origin = $_SERVER['HTTP_ORIGIN'];
-
-if ($http_origin == "http://usainbloot.github.io" || $http_origin == "http://localhost:3000")
-{
-    header("Access-Control-Allow-Origin: $http_origin");
+	if ($http_origin == "http://usainbloot.github.io" || $http_origin == "http://localhost:3000")
+	{
+		header("Access-Control-Allow-Origin: $http_origin");
+	}
 }
 
 $api = new PlacesAPI;
