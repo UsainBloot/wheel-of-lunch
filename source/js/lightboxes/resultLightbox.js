@@ -61,7 +61,7 @@ module.exports = (function($) {
   ResultLightbox.prototype.buildHref = function() {
     var resultName = this.restaurant.name.split(' ').join('+');
     var mapURL = "http://maps.google.com/maps/dir/";
-		var originCoords = WOL.app.geolocation.position.latitude + "," + WOL.app.geolocation.position.longitude;
+		var originCoords = WOL.app.settings.settings.latitude + "," + WOL.app.settings.settings.longitude;
 
     return mapURL + originCoords + '/' + resultName + ',' + this.restaurant.vicinity + '/@' + this.restaurant.lat + ',' + this.restaurant.lng;
   };
