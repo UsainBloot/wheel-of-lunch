@@ -3,6 +3,18 @@ Wheel of Lunch is a website which determines where a user should go for lunch. T
 
 [Click here to view demo.](http://UsainBloot.github.io/wheel-of-lunch)
 
+##Setup
+
+Node, NPM and Ruby are required to develop.
+Once these are installed, simply install.
+
+```
+npm install -g gulp
+
+npm install
+
+```
+
 ##Features
 
 * Range finder to determine a suitable distance to search for the initial 12 places.
@@ -12,7 +24,7 @@ Wheel of Lunch is a website which determines where a user should go for lunch. T
 * View rating out of 5 for selected place
 * Spin the wheel using click-and-drag or spin button
 * Location search net increments when few results are found (for rural areas).
-* Search for "restuaraunts", "food" or "bar".
+* Search for *restuaraunts*, *food* or *bar*.
 * Shareable url links (allows others to view the same results).
 
 ##Search Radius
@@ -20,7 +32,7 @@ When a user is in a rural area and the wheel can not find a suitable number of p
 
 ![Search radius increments](http://i.imgur.com/8YYuZlg.png "Search radius increments")
 
-Increment | Search Radius 
+Increment | Search Radius
 --- | ---
 1 | 300
 2 | 400
@@ -34,13 +46,12 @@ Increment | Search Radius
 ##Resources:
 
 * [Creating a roulette wheel using HTML5.](http://tech.pro/tutorial/1008/creating-a-roulette-wheel-using-html5-canvas)
-* [HTML5 confetti.](http://codepen.io/linrock/pen/Amdhr)
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Jack Palmer
+Copyright (c) 2015 Jack Palmer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
