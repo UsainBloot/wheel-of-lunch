@@ -1,33 +1,57 @@
-#Wheel of Lunch
-Wheel of Lunch is a website which determines where a user should go for lunch. The site utilises HTML5 to draw a wheel of a collection of local restaurants which is obtained from a custom RESTful API and Google Places.
+# Wheel of Lunch
+[![Build Status](https://travis-ci.org/UsainBloot/wheel-of-lunch.svg?branch=master)](https://travis-ci.org/UsainBloot/wheel-of-lunch)
 
-[Click here to view demo.](http://UsainBloot.github.io/wheel-of-lunch)
+Wheel of Lunch makes those difficult lunch decisions for you. Simply enter your location, spin the wheel and let the site suggest a place for lunch.
 
-##Setup
+Under the hood, Wheel of Lunch uses *Google Places*, *canvas*, *geo-ip location*, a custom *REST API*, a decent amount of geometry, and an *auto-expanding search algorithm* to ensure that it returns 12 locations no matter where you are.
 
-Node, NPM and Ruby are required to develop.
-Once these are installed, simply install.
+[Take me to the wheel.](http://UsainBloot.github.io/wheel-of-lunch)
 
-```
-npm install -g gulp
+## Features
 
-npm install
+* **Range finder** to determine a suitable distance to search for the initial 12 places.
+* Place results determined by **Google Places API**, returns 12 most relevant places
+* **Get location** via Google Maps or by geo-ip location.
+* **Get directions** to recommendation via Google Maps.
+* View **rating** out of 5 for selected place
+* **Click** and **draggable** wheel
+* Search for **restuaraunts**, **food** or **bar**.
+* **Shareable URL** (allows others to view the same results).
+* **Dynamic Search** option to automatically increase search radius until the desired number of results has been found or when a user is in a rural area.
 
-```
+## Setup
 
-##Features
+### Prerequisites
+* [Node](https://nodejs.org/)
+* [npm](https://www.npmjs.com/)
+* [Ruby](https://www.ruby-lang.org/en/)
 
-* Range finder to determine a suitable distance to search for the initial 12 places.
-* Get location via Google Maps or by current location.
-* Variable search parameters.
-* View selected place on Google Maps.
-* View rating out of 5 for selected place
-* Spin the wheel using click-and-drag or spin button
-* Location search net increments when few results are found (for rural areas).
-* Search for *restuaraunts*, *food* or *bar*.
-* Shareable url links (allows others to view the same results).
+### Installation
 
-##Search Radius
+To install all requirement node modules and bower components
+
+`npm install`
+
+## Development
+
+### Setup
+
+`gulp` - Build public folder, scss to css, JavaScript linting and Browserify.
+
+`gulp dev` - Same as `gulp` but also starts up a local server using BrowserSync.
+
+`gulp serve` - Only starts up a local BrowserSync server.
+
+### Framework
+
+* [Gulp](http://gulpjs.com/) - Automated task runner
+* [Browserify](http://browserify.org/) - Require modules in a node-like fashion
+* [Hogan](http://twitter.github.io/hogan.js/) - Dynamic HTML templating
+* [BrowserSync](http://www.browsersync.io/) - Easy synchronised local server for development
+
+
+## Search Radius
+
 When a user is in a rural area and the wheel can not find a suitable number of places within the default search radius, the search will increment until a suitable number is found.
 
 ![Search radius increments](http://i.imgur.com/8YYuZlg.png "Search radius increments")
@@ -43,9 +67,12 @@ Increment | Search Radius
 7 | 2500
 8 | 3000
 
-##Resources:
+## Resources
+* [Creating a roulette wheel using HTML5](http://tech.pro/tutorial/1008/creating-a-roulette-wheel-using-html5-canvas)
 
-* [Creating a roulette wheel using HTML5.](http://tech.pro/tutorial/1008/creating-a-roulette-wheel-using-html5-canvas)
+## Articles
+* [Git@Me - What's for lunch?](http://gitat.me/2015/07/23/Wheel-of-lunch/)
+* [DevPost.com - Wheel-O-Hackathons Challenge Post](http://devpost.com/software/wheel-o-hackathons)
 
 ## License
 
