@@ -4,6 +4,7 @@
   "description": "Wheel of Lunch API redirect for the Google Places API",
   "main": "app.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Palmer <jackpalmer2@gmail.com>",
