@@ -1,0 +1,15 @@
+{
+  "name": "wheel-of-lunch-api",
+  "version": "1.0.0",
+  "description": "Wheel of Lunch API redirect for the Google Places API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jack Palmer <jackpalmer2@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "googleplaces": "^0.6.0"
+  }
+}

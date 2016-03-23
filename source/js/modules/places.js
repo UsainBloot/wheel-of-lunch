@@ -4,7 +4,7 @@ module.exports = (function() {
 
   var ErrorLocationLightbox = require('../lightboxes/errorLocationLightbox.js');
 
-  var API_URL = 'http://www.jack-palmer.co.uk/wheel/api/getPlaces/';
+  var API_URL = 'http://www.jack-palmer.co.uk/api/places/';
 
   function Places(userOptions) {
 
@@ -35,7 +35,7 @@ module.exports = (function() {
     if(typeof this.URLparams.long !== 'undefined') { this.options.longitude = this.URLparams.long; }
     if(typeof this.URLparams.radius !== 'undefined') { this.options.radius = this.URLparams.radius; }
     if(typeof this.URLparams.type !== 'undefined') { this.options.placeType = this.URLparams.type; }
-    if(typeof this.URLparams.maxplaces !== 'undefined') { this.options.maxPlaces = this.URLparams.maxplaces; }
+    if(typeof this.URLparams.maxPlaces !== 'undefined') { this.options.maxPlaces = this.URLparams.maxPlaces; }
 
     if(typeof this.userOptions.latitude !== 'undefined') { this.options.latitude = this.userOptions.latitude; }
     if(typeof this.userOptions.longitude !== 'undefined') { this.options.longitude = this.userOptions.longitude; }
@@ -73,7 +73,7 @@ module.exports = (function() {
            'longitude=' + options.longitude + '&' +
            'radius=' + options.radius + '&' +
            'type=' + options.placeType + '&' +
-           'maxplaces=' + options.maxPlaces + '&' +
+           'maxPlaces=' + options.maxPlaces + '&' +
            'minPrice=' + '0' + '&' +
            'maxPrice=' + '4';
   };
