@@ -3,3 +3,4 @@ bower_components
 *.scssc
 config.codekit
 .sass-cache
+.DS_Store
