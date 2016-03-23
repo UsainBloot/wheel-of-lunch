@@ -16,7 +16,6 @@ module.exports = function(parameters, callback) {
     var responseBody = [];
 
     while(index < parameters.maxPlaces) {
-      console.log(response.results);
       var place = {
         'name': response.results[index]['name'],
         'lat': response.results[index]['geometry']['location']['lat'],
