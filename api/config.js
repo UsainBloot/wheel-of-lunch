@@ -1,4 +1,4 @@
 module.exports = {
-  apiKey: "AIzaSyDnM4OGSqM7nNwL5YXIjJikowkI9fEwXp8",
+  apiKey: "AIzaSyCGjVkAtfdNT6aWKb_cheGZDFMWid4g0Pw",
   format: "json"
 }
