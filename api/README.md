@@ -13,8 +13,14 @@ node server.js
 
 ## Building and Running the Express API Server with Docker
 ```
+docker network create --driver=bridge usainbloot
+
 docker build -t usainbloot/places-api .
-docker run -p 8080:8080 -d usainbloot/places-api
+docker run -p 8080:8080 -d --net=usainbloot --name=places-api usainbloot/places-api
+
+docker build -t usainbloot/nginx nginx/.
+docker run -p 80:80 -d --net=usainbloot --name=nginx usainbloot/nginx
+
 ```
 
 ## Example API request

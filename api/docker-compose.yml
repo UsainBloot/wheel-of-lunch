@@ -2,6 +2,8 @@ places-api:
   image: usainbloot/places-api
   net: usainbloot
   container_name: places-api
+  ports:
+    - "8080:8080"
 nginx:
   image: usainbloot/nginx
   net: usainbloot
