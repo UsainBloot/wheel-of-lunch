@@ -4,7 +4,7 @@ module.exports = (function() {
 
   var ErrorLocationLightbox = require('../lightboxes/errorLocationLightbox.js');
 
-  var API_URL = 'http://www.jack-palmer.co.uk/api/places/';
+  var API_URL = 'http://www.jack-palmer.co.uk/api/places';
 
   function Places(userOptions) {
 
