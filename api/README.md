@@ -19,7 +19,7 @@ docker build -t usainbloot/places-api .
 docker run -p 8080:8080 -d --net=usainbloot --name=places-api usainbloot/places-api
 
 docker build -t usainbloot/nginx nginx/.
-docker run -p 80:80 -d --net=usainbloot --name=nginx usainbloot/nginx
+docker run -p 80:80 -p 443:443 -d --net=usainbloot --name=nginx usainbloot/nginx
 
 ```
 
